@@ -1,0 +1,316 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.5 [en] (X11; I; Linux 2.0.36 i586) [Netscape]">
+   <meta name="AUTHOR" content="jean-marc lienher">
+   <meta name="CREATED" content="19990809;1004300">
+   <meta name="CHANGEDBY" content="jean-marc lienher">
+   <meta name="CHANGED" content="19990809;3375000">
+   <title>disque IDE &amp; SCSI, disquette, CD-ROM ...</title>
+<style>
+	<!--
+	-->
+	</style>
+</head>
+<body text="#000000" bgcolor="#E1E1E1" link="#0000EF" vlink="#51188E" alink="#FF0000" background="../../images/backgound.jpg" style="background-attachment: fixed">
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%" height="93%">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top">
+		<!-- MSCellType="DecArea" -->
+		<a href="http://www.lienher.org/jean-marc">
+		<img border="0" src="oksid.gif" alt="O'ksi'D Home page"></a></td>
+		<td valign="top">
+		<!-- MSCellType="ContentHead" -->
+		<table cellpadding="0" cellspacing="0">
+			<!-- MSTableType="layout" -->
+			<tr>
+				<td align="center" width="100%">
+				<h2 align="center">&nbsp;Solutions informatiques simples pour un 
+				monde complexe</h2>
+				</td>
+				<td valign="top" width="45"><a href="../../index_fr.html">
+				<img border="0" src="../../images/fr.gif" width="30" height="15" alt="Français"></a>&nbsp;</td>
+				<td height="85" valign="top" width="46">
+				<a href="../../index_en.html">
+				<img border="0" src="../../images/en.gif" width="30" height="15" alt="English"></a></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">
+		<!-- MSCellType="NavBody" -->
+		<center><b><u><font size=+3>Disque IDE &amp; SCSI, disquettes, CD-ROM</font></u></b></center>
+
+<p><br>
+<blockquote>
+<ul>
+<li>
+<a href="#Introduction">Introduction</a></li>
+
+<li>
+<a href="#Correspondance des pr">Correspondance des pr&eacute;riph&eacute;riques</a></li>
+
+<li>
+<a href="#Les partitions des disques durs">Les partitions des disques durs</a></li>
+
+<li>
+<a href="#Montage automatique au d">Montage automatique au d&eacute;marrage</a></li>
+
+<li>
+<a href="#demontage">D&eacute;montage des CD-ROM et disquette</a></li>
+
+<li>
+<a href="#mtool">Acc&egrave;s &agrave; une disquette sans la monter</a></li>
+
+<li>
+<a href="#Exemple complet avec un CD-ROM :">Exemple complet avec un CD-ROM
+IDE</a></li>
+</ul>
+</blockquote>
+
+<p><br><a NAME="Introduction"></a><b><u><font size=+1>Introduction</font></u></b>
+<br>&nbsp;
+<blockquote>Pour pouvoire lire les donn&eacute;es contenues sur un disque,
+une disquette ou un CD-ROM, il faut tout d'abord le "monter". En effet
+Linux, contrairement &agrave; Windows, n'attribue pas automatiquement une
+lettre &agrave; chaque disque et partition de disque.
+<p>La commande "mount" est utilis&eacute;e pour "monter" un disque
+<br>Sa syntaxe est :
+<blockquote>mount &lt;p&eacute;riph&eacute;rique> &lt;r&eacute;pertoire
+de montage></blockquote>
+Exemple pour une disquette :
+<blockquote>mount /dev/fd0 /floppy</blockquote>
+Expliquation :
+<blockquote>Toutes les p&eacute;riph&eacute;riques que Linux peut utiliser
+ont un fichier sp&eacute;cial dans le r&eacute;pertoire "/dev".
+<p>"mount" demande en param&egrave;tre le nom du fichier de p&eacute;riph&eacute;rique
+que l'on veut "monter" et le nom du r&eacute;pertoire o&ugrave; l'on veut
+"monter" le disque.
+<p>Le r&eacute;pertoire de montage doit exister , si il n'existe pas il
+faut le cr&eacute;er avec la commande "mkdir". Ce r&eacute;pertoire peut
+se trouver n'importe o&ugrave; dans l'arboressance.
+<p>La commande "mount" n'est utilisable que par l'utilisateur "root" (administrateur).
+<p>Quand le disque est mont&eacute;, les donn&eacute;es qu'il contient
+sont acc&egrave;ssibles dans le r&eacute;pertoire de montage comme toutes
+les autres donn&eacute;es contenues sur la partition "/".
+<br>&nbsp;</blockquote>
+</blockquote>
+<a NAME="Correspondance des pr"></a><b><u><font size=+1>Correspondance
+des pr&eacute;riph&eacute;riques :</font></u></b>
+<blockquote>
+<blockquote>&nbsp;
+<table BORDER CELLSPACING=0 NOSAVE >
+<tr NOSAVE>
+<td NOSAVE>/dev/fd0</td>
+
+<td>premier lecteur de disquette ("A:" sous DOS)</td>
+</tr>
+
+<tr>
+<td>/dev/fd1</td>
+
+<td>deuxi&egrave;me lecteur de disquette ("B:" sous DOS)</td>
+</tr>
+
+<tr>
+<td>/dev/hda</td>
+
+<td>premier disque dur IDE (master du controlleur 1)</td>
+</tr>
+
+<tr>
+<td>/dev/hdb</td>
+
+<td>deuxi&egrave;me disque dur ou CD-ROM IDE (slave du controlleur 1)</td>
+</tr>
+
+<tr>
+<td>/dev/hdc</td>
+
+<td>troisi&egrave;me disque dur ou CD-ROM IDE (master du controlleur 2)&nbsp;</td>
+</tr>
+
+<tr>
+<td>/dev/hdd</td>
+
+<td>quatri&egrave;me disque dur ou CD-ROM&nbsp; IDE (slave du controlleur
+2)</td>
+</tr>
+
+<tr NOSAVE>
+<td>/dev/sda</td>
+
+<td NOSAVE>premier disque dur SCSI</td>
+</tr>
+
+<tr>
+<td>/dev/sdb</td>
+
+<td>deuxi&egrave;me disque dur SCSI</td>
+</tr>
+
+<tr>
+<td>/dev/scd0</td>
+
+<td>premier CD-ROM SCSI</td>
+</tr>
+
+<tr>
+<td>/dev/scd1</td>
+
+<td>deuxi&egrave;me CD-ROM SCSI</td>
+</tr>
+</table>
+</blockquote>
+Contrairement aux disques durs, les disquettes et les CD-ROMs peuvent &ecirc;tre
+mont&eacute;s directement par leur p&eacute;riph&eacute;rique.
+<p>Le PC peut contenir jusqu'&agrave; 4 disques durs IDE ("/dev/hda ->
+/dev/hdd") et 16 disques durs SCSI ("/dev/sda -> /dev/sdp").</blockquote>
+<a NAME="Les partitions des disques durs"></a><b><u><font size=+1>Les partitions
+des disques durs</font></u></b>
+<blockquote>&nbsp;
+<br>Les disques durs IDE ou SCSI sont compos&eacute;s d'un secteur d'amorce
+et d'au moins une partition. Chaque disque peut avoir un maximum de 15
+partitions (4 partitions primaires ou 3 partitions primaire, 1 partition
+&eacute;tendue et 11 partitions secondaires).
+<p>Il faut donner en param&egrave;tre &agrave; "mount" le p&eacute;riph&eacute;rique
+repr&eacute;sentant la partition du disque que l'on veut "monter". Tout
+comme le pr&eacute;riph&eacute;rique repr&eacute;sentant le disque dur
+complet, la partition &eacute;tendue n'est pas "montable", mais les partitions
+qu'elle contient le sont.
+<p>Exemple de partitionnement d'un disque dur :
+<center><img SRC="part.gif" height=139 width=403></center>
+
+<p>En g&eacute;n&eacute;ral, "/dev/hda1" est la partition dos qui contient
+Windows 95, "/dev/hda2" est la partition de de "Swap" Linux, "/dev/hda3"
+est la partition "racine" "/" (principale) de Linux.
+<br>En g&eacute;n&eacute;ral, il n'y a pas de partition &eacute;tendue.
+<br>&nbsp;
+<br>&nbsp;
+<p>La commande "fdisk -l" donne la liste des partitions des disques durs
+:
+<center><table BORDER CELLSPACING=0 NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><font face="Courier New,Courier">root@linux:~ > fdisk -l</font>
+<p><font face="Courier New,Courier">Disk /dev/hda: 128 heads, 63 sectors,
+993 cylinders</font>
+<br><font face="Courier New,Courier">Units = cylinders of 8064 * 512 bytes</font>
+<p><font face="Courier New,Courier">&nbsp;&nbsp; Device Boot&nbsp;&nbsp;&nbsp;
+Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp; Blocks&nbsp;&nbsp;
+Id&nbsp; System</font>
+<br><font face="Courier New,Courier">/dev/hda1&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 204&nbsp;&nbsp; 822496+&nbsp;&nbsp; b&nbsp;
+Win95 FAT32</font>
+<br><font face="Courier New,Courier">/dev/hda2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+205&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 229&nbsp;&nbsp; 100800&nbsp;&nbsp; 82&nbsp;
+Linux swap</font>
+<br><font face="Courier New,Courier">/dev/hda3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+230&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 600&nbsp; 1495872&nbsp;&nbsp; 83&nbsp;
+Linux native</font>
+<br><font face="Courier New,Courier">/dev/hda4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+601&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 993&nbsp; 1584576&nbsp;&nbsp;&nbsp; 5&nbsp;
+Extended</font>
+<br><font face="Courier New,Courier">/dev/hda5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+601&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 800&nbsp;&nbsp; 806368+&nbsp; 83&nbsp;
+Linux native</font>
+<br><font face="Courier New,Courier">/dev/hda6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+801&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 993&nbsp;&nbsp; 778144+&nbsp; 83&nbsp;
+Linux native</font>
+<br><font face="Courier New,Courier">root@linux:~ ></font></td>
+</tr>
+</table></center>
+</blockquote>
+<a NAME="Montage automatique au d"></a><b><u><font size=+1>Montage automatique
+au d&eacute;marrage</font></u></b>
+<blockquote>Il est possible de demander &agrave; Linux de "monter" automatiquement
+les partitions des disques durs &agrave; chaque d&eacute;marrage en ajoutant
+un ligne dans le fichier "/etc/fstab".
+<blockquote>&nbsp;
+<table BORDER CELLSPACING=0 NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><tt>root@linux:~ > cat /etc/fstab&nbsp;</tt>
+<br><tt>/dev/hda3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ext2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+defaults&nbsp;&nbsp; 1&nbsp;&nbsp; 1</tt>
+<br><tt>/dev/hda2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+swap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+defaults&nbsp;&nbsp; 0&nbsp;&nbsp; 0</tt>
+<br><tt>/dev/hda1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /dos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+msdos&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; defaults&nbsp;&nbsp;
+0&nbsp;&nbsp; 0</tt>
+<br><tt>/dev/hdc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; /cdrom&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+iso9660&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ro,noauto,user
+0&nbsp;&nbsp; 0</tt>
+<br><tt>root@linux:~ ></tt></td>
+</tr>
+</table>
+</blockquote>
+Les deux premi&egrave;res lignes sont automatiquement g&eacute;n&eacute;r&eacute;es
+lors de l'installation, les 2 autres doivent &ecirc;tre ajout&eacute;es
+manuellement.
+<br>L'option "user" de la ligne correspondant au CD-ROM indique que tous
+les utilisateurs peuvent aussi utiliser "mount" pour le "monter" et "d&eacute;monter".</blockquote>
+<a NAME="demontage"></a><b><u><font size=+1>D&eacute;montage des CD-ROM
+et disquette</font></u></b>
+<blockquote>Lors que l'on veut retirer une disquette ou un CD-ROM de son
+lecteur, il faut tout d'abord le "d&eacute;monter" &agrave; l'aide de la
+commande "umount". "mount" sans param&egrave;tre affiche la liste de tous
+les pr&eacute;riph&eacute;riques actuellement "mont&eacute;s".
+<blockquote>&nbsp;
+<table BORDER CELLSPACING=0 NOSAVE >
+<tr>
+<td><tt>root@linux:~ > mount</tt>
+<br><tt>/dev/hda3 on / type ext2 (rw)</tt>
+<br><tt>proc on /proc type proc (rw)</tt>
+<br><tt>/dev/hda1 on /dos type msdos (rw)</tt>
+<br><tt>/dev/hdc on /cdrom type iso9660 (ro,noexec,nosuid,nodev)</tt>
+<br><tt>root@linux:~ > umount /cdrom</tt>
+<br><tt>root@linux:~ ></tt></td>
+</tr>
+</table>
+</blockquote>
+</blockquote>
+<a NAME="mtool"></a><b><u><font size=+1>Acc&egrave;s &agrave; une disquette
+sans la monter</font></u></b>
+<blockquote>Il y a une possiblit&eacute; de lire et d'&eacute;crire sur
+une disquette DOS sans la monter en utilisant les "mtools" (si le package
+correspondant est install&eacute;).
+<br>La commande "mdir a:" est l'&eacute;quivalent de "DIR A:" avec DOS
+et "mcopy a:* /tmp" est l'&eacute;quivalent de "COPY A:*.* \TMP".</blockquote>
+<a NAME="Exemple complet avec un CD-ROM :"></a><b><u><font size=+1>Exemple
+complet avec un CD-ROM IDE:</font></u></b>
+<blockquote>
+<blockquote>&nbsp;
+<table BORDER CELLSPACING=0 NOSAVE >
+<tr>
+<td><tt>root@linux:~ > grep -i CDROM /var/log/boot.msg&nbsp;</tt>
+<br><tt>&lt;4>hdc: CD-224E, ATAPI CDROM drive</tt>
+<br><tt>root@linux:~ > mkdir /cdrom</tt>
+<br><tt>root@linux:~ > mount /dev/hdc /cdrom</tt>
+<br><tt>mount: block device /dev/hdc is write-protected, mounting read-only</tt>
+<br><tt>root@linux:~ > ls /cdrom</tt>
+<br><tt>INDEX.gz&nbsp;&nbsp;&nbsp; TRANS.TBL&nbsp;&nbsp; full-names&nbsp;
+ls-lR.gz&nbsp;&nbsp;&nbsp; suse</tt>
+<br><tt>root@linux:~ > umount /cdrom</tt>
+<br><tt>root@linux:~ > ls /cdrom</tt>
+<br><tt>root@linux:~ > echo /dev/hdc /cdrom iso9660 user 0 0 >>/etc/fstab</tt>
+<br><tt>root@linux:~ ></tt></td>
+</tr>
+</table>
+</blockquote>
+</blockquote>
+
+		</td>
+	</tr>
+</table>
+<br />
+<hr noshade size="2" width="50%" />
+<center><font size="2">Copyright (c) 2001 Jean-Marc Lienher</font></center>
+
+
+</body>
+</html>

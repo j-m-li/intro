@@ -1,0 +1,96 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (X11; I; Linux 2.2.5 i586) [Netscape]">
+   <meta name="Author" content="Jean-Marc Lienher">
+   <title>cr&eacute;ation disquette boot</title>
+</head>
+<body bgcolor="#E1E1E1" link="#000066" vlink="#000099" alink="#FF0000" background="../../images/backgound.jpg" style="background-attachment: fixed">
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%" height="93%">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top">
+		<!-- MSCellType="DecArea" -->
+		<a href="http://www.lienher.org/jean-marc">
+		<img border="0" src="oksid.gif" alt="O'ksi'D Home page"></a></td>
+		<td valign="top">
+		<!-- MSCellType="ContentHead" -->
+		<table cellpadding="0" cellspacing="0">
+			<!-- MSTableType="layout" -->
+			<tr>
+				<td align="center" width="100%">
+				<h2 align="center">&nbsp;Solutions informatiques simples pour un 
+				monde complexe</h2>
+				</td>
+				<td valign="top" width="45"><a href="../../index_fr.html">
+				<img border="0" src="../../images/fr.gif" width="30" height="15" alt="Français"></a>&nbsp;</td>
+				<td height="85" valign="top" width="46">
+				<a href="../../index_en.html">
+				<img border="0" src="../../images/en.gif" width="30" height="15" alt="English"></a></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">
+		<!-- MSCellType="NavBody" -->
+		<center>
+<h1>
+<u>Cr&eacute;ation d'une disquette de "boot"</u></h1></center>
+
+<p><br>Si votre PC ne peut pas directement d&eacute;marrer &agrave; partir
+d'un CDROM, il faut cr&eacute;er une disquette de d&eacute;marrage (boot).
+<p>Pour &eacute;viter de cr&eacute;er une disquette, modifier les param&egrave;tre
+du BIOS pour que le PC d&eacute;marre depuis le CDROM :
+<center><img SRC="bios.gif" height=240 width=320></center>
+
+<p>Si votre PC ne poss&egrave;de pas cette option ... :
+<p><b>D&eacute;marrer Windows et ins&eacute;rer le CDROM Linux.</b>
+<br>Chercher le programme Rawrite. En g&eacute;n&eacute;ral, il se trouve
+dans le r&eacute;pertoire Dosutils ou Install ...
+<br>Il se peut qu'il s'appel Rawrite ou Rawrite3, ceci n'a pas d'importance.
+<blockquote>RedHat : &lt;CDROM>:\Dosutils\Rawrite
+<br>SuSE : &lt;CDROM>:\Dosutils\Rawrite\Rawrite
+<br>Slackware : &lt;CDROM>:\Install\Rawrite
+<br>OpenLinux : &lt;CDROM>:\Col\Launch\Floppy\Rawrite
+<br>Debian : &lt;CDROM>:\Install\Rw2_0</blockquote>
+<b>Double-cliquer sur l'ic&ocirc;ne Rawrite.</b>
+<br>Une fen&ecirc;tre s'ouvre et demande le nom du fichier source.
+<p>Chercher le fichier source de la disquette de boot correspondant &agrave;
+une installation normale.
+<blockquote>RedHat : &lt;CDROM>:\Images\Boot.img
+<br>SuSE : &lt;CDROM>:\Disks\Bootdisk
+<br>Slackware : &lt;CDROM>:\Bootdsks.144\Bare.i et &lt;CDROM>:\Rootdsks\Color.gz
+<br>OpenLinux : &lt;CDROM>:\Col\Launch\Floppy\install.144
+<br>Debian : &lt;CDROM>:\Install\Resc1440.bin</blockquote>
+
+<p><br><b>D&eacute;placer l'ic&ocirc;ne du fichier source sur la fen&ecirc;tre
+Rawrite </b>et l&acirc;cher le bouton de la souris.
+<br>Le nom du fichier s'affiche dans la fen&ecirc;tre Rawrite.
+<br>&nbsp;
+<p><img SRC="red_raw1.gif" height=491 width=414>
+<br>&nbsp;
+<p>Presser la touche de retour &agrave; la ligne (>>ENTER&lt;&lt;) dans
+la fen&ecirc;tre Rawrite.
+<br>Il demande d'indiquer le lecteur de disquette cible.
+<p><b>Taper "a" </b>et >>ENTER&lt;&lt;
+<br><b>Ins&eacute;rer une disquette neuve et format&eacute;e</b> DOS dans
+le lecteur de disquette.
+<br>Presser >>ENTER&lt;&lt;
+<p><img SRC="red_raw2.gif" height=251 width=415>
+<p>Attendre que Rawrite termine sont travail.
+<br>V&eacute;rifier qu'il n'y a pas de message d'erreur.
+<p>Si il y a un message d'erreur, recommencer toute l'op&eacute;ration
+avec une autre disquette neuve.
+<br>&nbsp;
+<br>&nbsp;
+		</td>
+	</tr>
+</table>
+<br />
+<hr noshade size="2" width="50%" />
+<center><font size="2">Copyright (c) 2001 Jean-Marc Lienher</font></center>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.61 [en] (X11; I; Linux 2.2.5 i586) [Netscape]">
+   <meta name="Author" content="Jean-Marc Lienher">
+   <title>FIPS</title>
+</head>
+<body text="#000000" bgcolor="#E1E1E1" link="#0000EE" vlink="#551A8B" alink="#FF0000" background="../../images/backgound.jpg" style="background-attachment: fixed">
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%" height="93%">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top">
+		<!-- MSCellType="DecArea" -->
+		<a href="http://www.lienher.org/jean-marc">
+		<img border="0" src="oksid.gif" alt="O'ksi'D Home page"></a></td>
+		<td valign="top">
+		<!-- MSCellType="ContentHead" -->
+		<table cellpadding="0" cellspacing="0">
+			<!-- MSTableType="layout" -->
+			<tr>
+				<td align="center" width="100%">
+				<h2 align="center">&nbsp;Solutions informatiques simples pour un 
+				monde complexe</h2>
+				</td>
+				<td valign="top" width="45"><a href="../../index_fr.html">
+				<img border="0" src="../../images/fr.gif" width="30" height="15" alt="Français"></a>&nbsp;</td>
+				<td height="85" valign="top" width="46">
+				<a href="../../index_en.html">
+				<img border="0" src="../../images/en.gif" width="30" height="15" alt="English"></a></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">
+		<!-- MSCellType="NavBody" -->
+		<!-- /OKSID_HEAD -->
+
+<!-- /OKSID_HEAD -->
+
+<center>
+<h1>
+<u>FIPS : cr&eacute;ation d'une nouvelle partition pour LINUX</u></h1></center>
+
+<center>(sans d&eacute;truire les donn&eacute;es qui se trouvent d&eacute;j&agrave;
+sur le disque dur)</center>
+
+<p><br>
+<ul>
+<li>
+Ins&eacute;rer la disquette contenant les fichiers syst&egrave;mes DOS
+et FIPS dans le lecteur de disquette</li>
+
+<li>
+Allumer l'ordinateur.</li>
+
+<li>
+La disquette ne doit PAS &ecirc;tre protégée en &eacute;criture,
+car une sauvegarde du secteur de boot de votre disque dur y sera faite.</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><tt><font color="#FFFFFF">Booting from Floppy Disk</font></tt>
+<br><tt><font color="#FFFFFF">D&eacute;marrage de Windows 98...</font></tt>
+<p><tt><font color="#FFFFFF">A:\></font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+Quand DOS est charg&eacute;, lancer "fips".</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr NOSAVE>
+<td NOSAVE><tt><font color="#FFFFFF">A:\><b>fips</b></font></tt>
+<br><tt><font color="#FFFFFF">FIPS version 1.5, Copyright (C) 1993/94 Arno
+Shaefer</font></tt>
+<br><tt><font color="#FFFFFF">&nbsp;&nbsp;&nbsp; FAT32 Support Copyright
+(C) 1997 Gordon Chaffee</font></tt>
+<p><tt><font color="#FFFFFF">DO NOT use FIPS in a multitasking environement
+like Windows ...</font></tt>
+<br><tt><font color="#FFFFFF">... or Linux DOS emulator : boot from a DOS
+boot disk fist.</font></tt>
+<p><tt><font color="#FFFFFF">If you use OS/2 or a disk compressor, read
+the relevant sections in FIPS.DOC</font></tt>
+<p><tt><font color="#FFFFFF">FIPS comes with ABSOLUTELY NO WARRANTY, ...</font></tt>
+<br><tt><font color="#FFFFFF">This ...</font></tt>
+<br><tt><font color="#FFFFFF">under ... details.</font></tt>
+<p><tt><font color="#FFFFFF">Press any Key</font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+<font color="#000000">Presser sur une touche.</font></li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">Partition table :</font></tt>
+<p><tt><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| Start&nbsp; |Number of|</font></tt>
+<br><tt><font color="#FFFFFF">Part.|bootable|Head Cyl. Sector|System|Head
+Cyl. Sector| Sector |Sectors&nbsp; |&nbsp; MB</font></tt>
+<br><tt><font color="#FFFFFF">-----+--------+----------------+------+----------------+--------+---------+----</font></tt>
+<br><tt><font color="#FFFFFF">1&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; yes
+|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1|&nbsp;&nbsp;
+83h|&nbsp; 127 991&nbsp;&nbsp;&nbsp;&nbsp; 63|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+63|&nbsp; 7999425|3985</font></tt>
+<br><tt><font color="#FFFFFF">2&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;
+00h|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp; 0</font></tt>
+<br><tt><font color="#FFFFFF">3&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;
+00h|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp; 0</font></tt>
+<br><tt><font color="#FFFFFF">4&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;
+00h|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp; 0</font></tt>
+<p><tt><font color="#FFFFFF">Checking root sector ... OK</font></tt>
+<p><tt><font color="#FFFFFF">Press any Key</font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+Presser sur une touche.</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">Boot sector :</font></tt>
+<p><tt><font color="#FFFFFF">Bytes per sector: 512</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per cluster: 8</font></tt>
+<br><tt><font color="#FFFFFF">Reserved sectors: 32</font></tt>
+<br><tt><font color="#FFFFFF">Number of FATs: 2</font></tt>
+<br><tt><font color="#FFFFFF">Number of rootdirectory entries: 0</font></tt>
+<br><tt><font color="#FFFFFF">Number of sectors (short): 0</font></tt>
+<br><tt><font color="#FFFFFF">Media descriptor byte: f8h</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per FAT: 7805</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per track: 63</font></tt>
+<br><tt><font color="#FFFFFF">Drive heads: 128</font></tt>
+<br><tt><font color="#FFFFFF">Hidden sectors: 63</font></tt>
+<br><tt><font color="#FFFFFF">Number of sectors (long): 7999425</font></tt>
+<br><tt><font color="#FFFFFF">Physical drive number: 80h</font></tt>
+<br><tt><font color="#FFFFFF">Signature: 29h&nbsp;</font></tt>
+<p><tt><font color="#FFFFFF">Checking boot sector ... OK</font></tt>
+<br><tt><font color="#FFFFFF">Checking FAT ... OK</font></tt>
+<br><tt><font color="#FFFFFF">Searching for free space ... OK</font></tt>
+<p><tt><font color="#FFFFFF">Do you want to make a backup copy of your
+root and boot sector before&nbsp;</font></tt>
+<br><tt><font color="#FFFFFF">proceeding (y/n)? <b>y</b></font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+R&eacute;pondre "y" ( touche "z" si vous n'avez pas configur&eacute; correctement
+le clavier).</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">Do you have a bootable floppy disk in drive
+A: as described in the</font></tt>
+<br><tt><font color="#FFFFFF">documentation (y/n)?<b>y</b></font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+R&eacute;pondre "y" ( "z" si ...)</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">Writing file a:\rootboot.000</font></tt>
+<p><tt><font color="#FFFFFF">Enter start cylinder for new partition (114
+- 991):</font></tt>
+<p><tt><font color="#FFFFFF">Use the cursor keys to choose the cylinder,
+&lt;enter> to continue</font></tt>
+<p><tt><font color="#FFFFFF">Old Partition&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Cylinder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New Partition</font></tt>
+<br><tt><font color="#FFFFFF">&nbsp;&nbsp;&nbsp; 448.9 MB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+114&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3457.1 MB</font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+<font color="#000000">Utiliser les touches de fl&egrave;ches pour modifier
+la taille de la nouvelle partition ("New Partition").</font></li>
+
+<li>
+<font color="#000000">Cette partition devait &ecirc;tre au minimum de 500MB
+ou m&ecirc;me 2048MB pour pouvoir installer un syst&egrave;me LINUX r&eacute;ellement
+utilisable.</font></li>
+
+<li>
+<font color="#000000">Presser &lt;ENTER> quand le r&eacute;sultat est bon.</font></li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">First Cluster: 203670</font></tt>
+<br><tt><font color="#FFFFFF">Last Cluster: 997971</font></tt>
+<p><tt><font color="#FFFFFF">Test if empty ... OK</font></tt>
+<p><tt><font color="#FFFFFF">New partition table:</font></tt>
+<p><tt><font color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; Start&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; End&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+| Start&nbsp; |Number of|</font></tt>
+<br><tt><font color="#FFFFFF">Part.|bootable|Head Cyl. Sector|System|Head
+Cyl. Sector| Sector |Sectors&nbsp; |&nbsp; MB</font></tt>
+<br><tt><font color="#FFFFFF">-----+--------+----------------+------+----------------+--------+---------+----</font></tt>
+<br><tt><font color="#FFFFFF">1&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp; yes
+|&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1|&nbsp;&nbsp;
+83h|&nbsp; 127 283&nbsp;&nbsp;&nbsp;&nbsp; 63|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+63|&nbsp; 1644993| 448</font></tt>
+<br><tt><font color="#FFFFFF">2&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp; 204&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1|&nbsp;&nbsp;
+83h|&nbsp; 127 991&nbsp;&nbsp;&nbsp;&nbsp; 63| 1645056|&nbsp; 6343444|3457</font></tt>
+<br><tt><font color="#FFFFFF">3&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;
+00h|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp; 0</font></tt>
+<br><tt><font color="#FFFFFF">4&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+no |&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;
+00h|&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0|&nbsp;&nbsp; 0</font></tt>
+<p><tt><font color="#FFFFFF">Checking root sector ... OK</font></tt>
+<p><tt><font color="#FFFFFF">Do you want to continue or reedit the partition
+table (c/r)? <b>c</b></font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+<font color="#000000">Si le r&eacute;sultat vous pla&icirc;t, presser la
+touche "c" sinon "r".</font></li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">New boot sector:</font></tt>
+<p><tt><font color="#FFFFFF">Bytes per sector: 512</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per cluster: 8</font></tt>
+<br><tt><font color="#FFFFFF">Reserved sectors: 32</font></tt>
+<br><tt><font color="#FFFFFF">Number of FATs: 2</font></tt>
+<br><tt><font color="#FFFFFF">Number of rootdirectory entries: 0</font></tt>
+<br><tt><font color="#FFFFFF">Number of sectors (short): 0</font></tt>
+<br><tt><font color="#FFFFFF">Media descriptor byte: f8h</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per FAT: 7805</font></tt>
+<br><tt><font color="#FFFFFF">Sectors per track: 63</font></tt>
+<br><tt><font color="#FFFFFF">Drive heads: 128</font></tt>
+<br><tt><font color="#FFFFFF">Hidden sectors: 63</font></tt>
+<br><tt><font color="#FFFFFF">Number of sectors (long): 1644993</font></tt>
+<br><tt><font color="#FFFFFF">Physical drive number: 80h</font></tt>
+<br><tt><font color="#FFFFFF">Signature: 29h&nbsp;</font></tt>
+<p><tt><font color="#FFFFFF">Checking boot sector ... OK</font></tt>
+<p><tt><font color="#FFFFFF">Ready to write new partition sheme to disk</font></tt>
+<br><tt><font color="#FFFFFF">Do you want to proceed (y/n)?<b>y</b></font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+Presser "y" ("z" si ...) pour valider le changement.</li>
+</ul>
+
+<table BORDER COLS=1 WIDTH="100%" BGCOLOR="#000000" NOSAVE >
+<tr>
+<td><tt><font color="#FFFFFF">Repartitioning complete</font></tt>
+<br><tt><font color="#FFFFFF">With FAT32 partitions, you should now run
+scandisk on rhe shortened partition</font></tt>
+<p><tt><font color="#FFFFFF">Bye!</font></tt>
+<p><tt><font color="#FFFFFF">Erreur d'allocation m&eacute;moire</font></tt>
+<br><tt><font color="#FFFFFF">Impossible de charger COMMAND, syst&egrave;me
+suspendu</font></tt></td>
+</tr>
+</table>
+
+<ul>
+<li>
+Voil&agrave;, c'est termin&eacute;!</li>
+
+<li>
+Le message d'erreur affich&eacute; est normal.</li>
+
+<li>
+Il vous faudra presser le bouton "reset" de votre ordinateur pour red&eacute;marrer
+apr&egrave;s avoir retir&eacute; la disquette.</li>
+
+<li>
+Si le PC ne peut plus acc&eacute;der au disque dur, red&eacute;marrer avec
+la disquette DOS et utiliser "restorrb" pour annuler les changements faits
+par FIPS.</li>
+</ul>
+
+<ul>
+<li>
+Red&eacute;marrer Windows et lancer "scandisk" pour vérifier que tout c'est
+bien pass&eacute;.</li>
+</ul>
+		<pre>
+
+</td>
+	</tr>
+</table>
+<br />
+<hr noshade size="2" width="50%" />
+<center><font size="2">Copyright (c) 2000 Jean-Marc Lienher</font></center>
+
+</body>
+</html>

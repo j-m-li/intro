@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Internet</title>
+</head>
+<body background="../../images/backgound.jpg" style="background-attachment: fixed">
+
+<table border="0" cellpadding="3" cellspacing="0" width="100%" height="93%">
+	<!-- MSTableType="layout" -->
+	<tr>
+		<td valign="top">
+		<!-- MSCellType="DecArea" -->
+		<a href="http://www.lienher.org/jean-marc">
+		<img border="0" src="oksid.gif" alt="O'ksi'D Home page"></a></td>
+		<td valign="top">
+		<!-- MSCellType="ContentHead" -->
+		<table cellpadding="0" cellspacing="0">
+			<!-- MSTableType="layout" -->
+			<tr>
+				<td align="center" width="100%">
+				<h2 align="center">&nbsp;Solutions informatiques simples pour un 
+				monde complexe</h2>
+				</td>
+				<td valign="top" width="45"><a href="../../index_fr.html">
+				<img border="0" src="../../images/fr.gif" width="30" height="15" alt="Français"></a>&nbsp;</td>
+				<td height="85" valign="top" width="46">
+				<a href="../../index_en.html">
+				<img border="0" src="../../images/en.gif" width="30" height="15" alt="English"></a></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" colspan="2">
+		<!-- MSCellType="NavBody" -->
+		<!-- /OKSID_HEAD -->
+
+/etc/ppp/chap-secrets :
+<pre>
+utilisateur	*	mot_de_passe
+sunrise	*	freesurf
+</pre>
+
+/etc/ppp/peers/connect:
+<pre>
+noauth
+connect "/usr/sbin/chat -v -f /etc/chatscripts/connect"
+debug
+/dev/ttyS0
+115200
+defaultroute
+noipdefault
+usepeerdns
+user utilisateur
+</pre>
+
+/etc/chatscripts/connect :
+<pre>
+ABORT BUSY
+ABORT "NO CARRIER"
+ABORT VOICE
+ABORT "NO DIALTONE"
+ABORT "NO ANSWER"
+"" ATZ
+OK ATDTnumero_de_telephone
+CONNECT \d\c
+
+
+</td>
+	</tr>
+</table>
+<br />
+<hr noshade size="2" width="50%" />
+<center><font size="2">Copyright (c) 2001 Jean-Marc Lienher</font></center>
+
+
+</body>
+</html>
