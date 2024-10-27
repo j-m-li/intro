@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction &agrave; UNIX</title>
+<meta name="description" content="Linux">
+<meta content="Jean-Marc Lienher" name="author">
+<link href="../style.css" rel="stylesheet">
+<link rel="icon" href="../favicon.ico">
+
+<style>
+* {
+/*   outline: 1px solid #f00 !important;
+  */ 
+}
+h1, h2, h3 {text-align: center; }
+a { text-decoration: none;}
+
+h1, h2, body {
+	font-family: 
+		"Quicksand",
+		system-ui,
+  		-apple-system,
+  		"Segoe UI",
+  		Roboto,
+  		"Helvetica Neue", Arial,
+  		"Noto Sans",
+  		"Liberation Sans",
+  		sans-serif;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+hr {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+</style>
+</head>
+<body class="mx-0 mx-sm-auto">
+<header class="mt-2">
+<div class="text-center">
+<pre>
+<a 
+href="fr.html"><img alt="fr" src="../img/fr.gif"></a
+>    <a
+href="pan.html"><img alt="pandunia" src="../img/pan.gif"></a
+>    <a
+href="en.html"><img alt="en" src="../img/en.gif"></a
+>    <a
+href="de.html"><img alt="de" src="../img/de.gif"></a
+>    <a
+href="it.html"><img alt="it" src="../img/it.gif"></a>
+</pre>
+</div>
+<div class="text-center">
+<a href="../fr.html">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-check-fill" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+  <path d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514Z"/>
+</svg>
+</a>
+</div>
+</header>
+
+<div class="mx-0 mx-sm-5" >
+<div class="row mx-auto">
+<div class="container"><p>
+</p></div><div class="col-12">
+<h1>Introduction &agrave; UNIX</h1>
+</div><div class="mx-auto mb-4 col-12 col-sm-6 col-lg-4  text-start">
+<p>
+</p></div><div class="col-12">
+<h2>Linux</h2>
+</div><div class="mx-auto mb-4 col-12 col-sm-6 col-lg-4  text-start">
+<p>
+</p></div>
+<div class="mx-auto col-12 col-lg-9"><hr>
+<p>
+<p><br>
+<h2>
+Table des Mati&egrave;res</h2>
+
+<ul>
+<li>
+&nbsp;<a href="#But du document">But du document</a></li>
+
+<li>
+&nbsp;<a href="#Historique">Historique</a></li>
+
+<li>
+&nbsp;<a href="#Fonctionnement simple d'un ordinateur">Fonctionnement simple
+d'un ordinateur</a></li>
+
+<li>
+&nbsp;<a href="#Principes de base et définitions">Principes de base et
+d&eacute;finitions</a></li>
+
+<li>
+&nbsp;<a href="#Utiliser UNIX">Utiliser UNIX</a></li>
+
+<li>
+&nbsp;<a href="#Travailler avec UNIX">Travailler avec UNIX</a></li>
+
+<li>
+&nbsp;<a href="#Exécuter des commandes ou lancer des applications">Ex&eacute;cuter
+des commandes ou lancer des applications</a></li>
+
+<li>
+&nbsp;<a href="#UNIX Shell : csh">UNIX Shell : csh</a></li>
+
+<li>
+&nbsp;<a href="#Le système de fichiers">Le syst&egrave;me de fichiers</a></li>
+
+<li>
+&nbsp;<a href="#Les chemins d'accès">Les chemins d'acc&egrave;s</a></li>
+
+<li>
+&nbsp;<a href="#Nom des fichiers et répertoires">Nom des fichiers et r&eacute;pertoires</a></li>
+
+<li>
+&nbsp;<a href="#Les droits d'accès">Les droits d'acc&egrave;s</a></li>
+
+<li>
+&nbsp;<a href="#Les processus">Les processus</a></li>
+
+<li>
+&nbsp;<a href="#UNIX en réseaux">UNIX en r&eacute;seaux</a></li>
+
+<li>
+&nbsp;<a href="#Les commandes">Les commandes</a></li>
+
+<li>
+&nbsp;<a href="#Quelques exemples pratiques">Quelques exemples pratiques</a></li>
+
+<li>
+&nbsp;<a href="#Bibliographie">Bibliographie</a></li>
+</ul>
+
+<h2>
+<a NAME="But du document"></a>But du document</h2>
+Ce document est une courte introduction au syst&egrave;me d'exploitation
+UNIX. Il donne les informations de base qui vous permettrons d'utiliser
+et de comprendre une station de travail UNIX.
+<p>UNIX est un OS extr&ecirc;mement puissant et malheureusement complexe,
+ce document vous ouvre une porte vers sa ma&icirc;trise. Le but n'est pas
+d&eacute;couvrir toutes les fonctionnalit&eacute;s de LINUX, pour cela
+il vous faudra lire un ouvrage plus cons&eacute;quent, par exemple : "UNIX"
+de M. Wielsch.
+<br>&nbsp;
+<h2>
+<a NAME="Principes de base et définitions"></a>Principes de base et d&eacute;finitions</h2>
+<b>LINUX</b> est le nom que Linus Torvalds a donn&eacute; &agrave; sa propre
+version de UNIX.
+<p>Une <b>station de travail</b> (Work Station) est un ordinateur puissant
+qui est destin&eacute; des t&acirc;ches praticuli&egrave;res. Il a peu
+de temps encore, on opposait les stations de travail aux PCs, qui &eacute;taient
+bien loin derri&egrave;re au niveau des performances. Ceci a l&eacute;g&egrave;rement
+chang&eacute;, car heureusement pour nous les utilisateurs et malheureusement
+pour les fabricants de station de travail, les PCs ont connus un &eacute;volution
+technologique &eacute;norme. Si bien qu'&agrave; l'heure actuelle certains
+PCs haut de gamme sont plus performants que certaines stations de travail
+bas de gamme, pour un prix nettement moins &eacute;lev&eacute;.
+<p><b>UNIX </b>est un syst&egrave;me d'exploitation multit&acirc;ches et
+multi-utilisateurs.
+<br>(MS-DOS est un syst&egrave;me d'exploitation monot&acirc;che et mono-utilisateur).
+<br>&nbsp;
+<table BORDER=0 CELLSPACING=5 WIDTH="100%" >
+<tr>
+<td><b>Syst&egrave;me d'exploitation </b>:&nbsp;
+<br>&nbsp;(Operating System)&nbsp;
+<address>
+&nbsp;</address>
+</td>
+
+<td>
+<address>
+Il s'agit d'un "programme" qui est charge de g&eacute;rer les ressources
+mat&eacute;rielles (m&eacute;moire, &eacute;cran, clavier, disque...) et
+de mettre ces ressources &agrave; disposition des programmes de l'utilisateur.&nbsp;</address>
+</td>
+</tr>
+
+<tr>
+<td><b>Multit&acirc;ches</b> :&nbsp;</td>
+
+<td>
+<address>
+Le syst&egrave;me d'exploitation est capable de faire "tourner" plusieurs
+programmes en m&ecirc;me temps. (Sur un ordinateur qui n'a qu'un processeur
+les programmes utilisent le processeur tour &agrave; tour tr&egrave;s rapidement.
+Ce qui donne l'impression &agrave; l'utilistaeur que les programmes fonctionnent
+tous en m^eme temps.)</address>
+</td>
+</tr>
+
+<tr>
+<td><b>Multi-utilisateurs </b>:&nbsp;</td>
+
+<td>
+<address>
+Plusieurs utilisateurs diff&eacute;rents peuvent utiliser le m&ecirc;me
+ordinateur en m&ecirc;me temps. Ils ont chacun un &eacute;cran et un clavier
+(terminal), ils se partagent le processeur, la m&eacute;moire et le disque
+dur... Ils ont chacun un acompte diff&eacute;rent qui peut &ecirc;tre prot&egrave;g&eacute;
+par un mot de passe, ce qui garantit une securit&eacute; minimum. Un utilistateur
+ne peut pas &eacute;ffacer les fichiers cr&eacute;es par un autre, sauf
+si l'administrateur lui en donne le pouvoir.</address>
+</td>
+</tr>
+</table>
+
+<p>l'<b>administrateur </b>est la personne qui s'occupe de g&egrave;rer
+la station de travail. Son role est de cr&eacute;er les acomptes pour le
+nouveau utilistaeur et de g&egrave;rer la configuration des logiciels.
+Le nom de son acompte est toujours "root". Il a tous les pouvoirs, il peut
+tout effacer sur le disque dur, changer les mots de passe des utilisateurs
+et si&nbsp; il en a envie, il peut lire les fichiers personnels des utilisateurs.
+<p>Le <b>SHELL</b> est l'interpr&eacute;teur de commande. Il sert &agrave;
+"traduire" les informations qui proviennent du syst&egrave;me d'exploitation
+en informations compr&eacute;hensibles par un humain et inversement, &agrave;
+"traduire" les informations entr&eacute;es par un humain en informations
+compr&eacute;hensibles par l'OS (Operating System). Il permet aussi de
+cr&eacute;er des petits programmes et donne acc&egrave;s &agrave; quelque
+commandes de base (ls, cd, pwd, ...).
+<p><b>X-Window</b> ajoute des fonctions sp&eacute;cialis&eacute;es pour
+l'affichage graphique.
+<p>Le <b>gestionnaire de fen&ecirc;tres</b> (Window manager) sert &agrave;
+d&eacute;finir l'apparence des icons, des fen&ecirc;tres, les couleurs
+et les actions &agrave; effectuer lorsque l'utilisateur "cilc" avec la
+souris.
+<p>Le <b>bureau</b> est la totalit&eacute; de l'&eacute;cran, l&agrave;
+o&ugrave; viennent se poser les icons, ...
+<p>Le <b>BIOS </b>sert &agrave; initialiser le mat&eacute;riel, &agrave;
+v&eacute;rifier qu'il fonctionne et &agrave; charger le Kernel UNIX dans
+la m&eacute;moire.
+<h4>
+Sch&eacute;ma <b><u>simplifi&eacute;</u></b> des diff&eacute;rentes couches
+logiciels :</h4>
+<img SRC="logi.gif" height=240 width=634>
+<br>&nbsp;
+<br>&nbsp;
+<h2>
+<a NAME="Historique"></a>Historique</h2>
+Le premier syst&egrave;me d'exploitation UNIX a &eacute;t&eacute; cr&eacute;&eacute;
+en 1969 par Bell Laboratories, un centre de recherche commun &agrave; AT&amp;T
+et Western Electric. En 1976, le syst&egrave;me a commenc&eacute; &agrave;
+&ecirc;tre diffus&eacute; commercialement.
+<p>Depuis plusieurs soci&eacute;t&eacute;s ont d&eacute;velopp&eacute;
+s&eacute;par&eacute;ment leurs versions de UNIX. Les universit&eacute;s
+am&eacute;ricaines ont largement contribu&eacute; au d&eacute;veloppement
+de UNIX, en particulier celle de Berkeley.
+<br>AT&amp;T a essay&eacute; de d&eacute;finir les standards UNIX, les
+diff&eacute;rents constructeurs informatiques ne suivent pas forcement
+ces standards. Les derniers standards sont l'X/OPEN Portability Guide et
+POSIX, beaucoup de soci&eacute;t&eacute;s les suivent.
+<p>L' X-Consortium du MIT (Massachusetts Institue for Technology) qui r&eacute;unit
+la plus part des constructeurs informatique&nbsp; a d&eacute;velopp&eacute;
+l'interface graphique X-Window pour UNIX.
+<p>( MS-DOS, le syst&egrave;me d'exploitation qui a fait la fortune de
+<i>Bill
+Gates</i>, est un lointain d&eacute;riv&eacute; de UNIX. Windows NT est
+un syst&egrave;me d'exploitation qui tente de pr&eacute;server la compatibilit&eacute;
+MS-DOS et les avantages du Multi-t&acirc;ches UNIX.)
+<p>Il existe plusieurs versions de UNIX qui fonctionnent sur les PC compatibles
+IBM, dont une particuli&egrave;rement int&eacute;ressante, puisque elle
+est <u>gratuite</u> , comprend un nombre impr&eacute;ssionnant d'applications
+et est accompagn&eacute;e de tous les codes sources.&nbsp; Elle s'appelle
+<b><a href="http://www.linux.org">LINUX</a></b>.
+Elle a &eacute;t&eacute; d&eacute;velopp&eacute;e par <i>Linus Torvalds
+(Universit&eacute; d'Helsinki Finlande)</i> et des milliers de b&eacute;n&eacute;voles.
+A l'heure actuelle,
+<i><a href="http://www.linux.org">Linux</a></i> est
+le seul OS pour PC qui peut pr&eacute;tendre concurrencer ceux de Microsoft
+dans un proche avenir.
+<h2>
+<a NAME="Fonctionnement simple d'un ordinateur"></a>Fonctionnement simple
+d'un ordinateur</h2>
+Tous les ordinateurs doivent contenir les &eacute;l&eacute;ments physiques
+suivants pour fonctionner :
+<ul>
+<li>
+Un micro-processeur (CPU), qui traite les donn&eacute;es en fonction des
+programmes.</li>
+
+<li>
+De la m&eacute;moire RAM, pour y stocker temporairement les donn&eacute;es
+et les programmes.</li>
+
+<li>
+Une ROM, qui contient un petit programme qui permet d'initialiser l'ordinateur
+(BIOS).</li>
+
+<li>
+Des p&eacute;riph&eacute;riques, pour stocker les programmes et les donn&eacute;es,
+et pour inter-agir avec les utilisateurs.</li>
+
+<li>
+Un bus (= des fils &eacute;lectriques), qui relie ensemble tous les autres
+&eacute;l&eacute;ments.</li>
+
+<li>
+Une alimentation &eacute;lectrique en courant continu.</li>
+</ul>
+&nbsp;<b>Architecture <u>simplifi&eacute;e</u> d'un ordinateur :</b>
+<p><img SRC="pc.jpg" height=300 width=100%>
+<p><b>S&eacute;quence de d&eacute;marrage :</b>
+<ol>
+<li>
+L'ordinateur est allum&eacute;.</li>
+
+<li>
+Apr&egrave;s quelques dixi&egrave;mes de secondes un "RESET" est automatiquement
+g&eacute;n&eacute;r&eacute;.</li>
+
+<li>
+Le processeur va lire les instructions plac&eacute;es dans la ROM.</li>
+
+<li>
+Ces instructions lui indiquent de d&eacute;tecter et d'initialiser tous
+les composants pr&eacute;sents dans l'ordinateur.</li>
+
+<li>
+Il m&eacute;morise dans la RAM toutes les adresses et le type de tous les
+composants qu'il a trouv&eacute;.</li>
+
+<li>
+Si il trouve un probl&egrave;me sur un des composants, il s'arr&ecirc;te
+et affiche un message &agrave; l'&eacute;cran.</li>
+
+<li>
+Sinon, il essaie de trouver le syst&egrave;me d'exploitation. Il ira le
+chercher sur le disque dur (PC), sur une disquette (PC), sur un CD-ROM
+(PlayStation), dans une cartouche ROM (Nintendo 64) ou sur le r&eacute;seau
+(PC sans disque dur) suivant le type de l'ordinateur.</li>
+
+<li>
+Si il ne trouve pas de syst&egrave;me d'exploitation, il affiche un message
+et s'arr&ecirc;te. Sinon, il le charge dans la RAM.</li>
+
+<li>
+Si tout se passe bien, il ex&eacute;cute le syst&egrave;me d'exploitation
+et l'ordinateur est pr&ecirc;t &agrave; &ecirc;tre utilis&eacute;.</li>
+</ol>
+
+<p><br>Le micro-processeur (CPU : Central Processing Unit) est charg&eacute;
+d'ex&eacute;cuter les instructions des programmes. Ce n'est pas un cerveau,
+il compl&egrave;tement stupide, il ne fait que ce que le programmeur lui
+demande de faire. Si le CPU se retrouve dans une situation que le programmeur
+du kernel n'a pas pr&eacute;vu, il fait "planter" le syst&egrave;me. Sous
+UNIX un "plantage" du syst&egrave;me se traduit par un message du genre
+"PANIC : General exception". Le "plantage" d'un programme simple se traduit
+par un message du style "Segmentation Fault. core dumped".
+<br>&nbsp;
+<h2>
+<a NAME="Utiliser UNIX"></a>Utiliser UNIX</h2>
+Pour utiliser Unix il faut :
+<ul>
+<li>
+Un ordinateur (relativement puissant) avec un disque dur contenant le syst&egrave;me
+d'exploitation.</li>
+
+<li>
+Raccorder l'ordinateur &agrave; une prise 230V et l'enclencher !!!</li>
+
+<li>
+Quand la banni&egrave;re du LOGIN apparet, il faut entrer un nom d'acompte
+et un mot de passe. Sur toutes les machines, il y un acompte "root" qui
+est destin&eacute; &agrave; l'administrateur du syst&egrave;me, en g&eacute;n&eacute;ral&nbsp;
+les utilisateurs normaux n'y ont pas acc&egrave;s. En g&eacute;n&eacute;ral,
+il y a aussi un acompte "guest" qui n'est pas prot&eacute;g&eacute; par
+un mot de passe, mais l'utilisateur "guest" (invit&eacute;) n'a pas le
+droit d'effacer ou de modifier les fichiers qu'il n'a pas cr&eacute;er
+lui-m&ecirc;me. Si vous &ecirc;tes sur votre propre machine, vous avez
+certainement un acompte &agrave; votre nom et un mot de passe connu de
+vous seul.</li>
+
+<li>
+Pour quitter son acompte UNIX, il faut&nbsp; taper "<tt>logout</tt>" dans
+un&nbsp; Shell,.</li>
+
+<li>
+Pour arr&ecirc;ter l'ordinateur, il faut taper "<tt>init 0</tt>" dans un&nbsp;
+Shell (fonctionne uniquement en <tt>root</tt>).</li>
+</ul>
+
+<h2>
+<a NAME="Travailler avec UNIX"></a>Travailler avec UNIX</h2>
+
+<ul>
+<li>
+UNIX et les outils standards de UNIX ne permettent pas de r&eacute;ellement
+travailler, ils servent uniquement &agrave; administrer le syst&egrave;me.
+Pour travailler avec UNIX, il faut lui <u>ajouter</u> des applications
+telle que "Netscape", "TheGimp", "StarOffice", "ApplixWare"...</li>
+
+<li>
+Donc, en g&eacute;n&eacute;ral, vous ne travaillez pas avec UNIX. Vous
+travaillez avec des applications qui fonctionnent sous UNIX, c'est totalement
+diff&eacute;rent. Le pr&eacute;sent document traite uniquement de UNIX
+lui-m&ecirc;me et pas des applications.</li>
+</ul>
+
+<h2>
+&nbsp;<a NAME="Exécuter des commandes ou lancer des applications"></a>Ex&eacute;cuter
+des commandes ou lancer des applications</h2>
+Pour ex&eacute;cuter une commande ou une application, il y a plusieurs
+fa&ccedil;ons de faire pour arriver au m&ecirc;me r&eacute;sultat :
+<ul>
+<li>
+La plus simple, si vous avez KDE ou Gnome : Si l'icon de l'application
+se trouve sur le bureau, cliquez&nbsp; dessus.</li>
+
+<li>
+Si l'administrateur a configur&eacute; le menu de la barre des t&acirc;ches
+pour votre application, cliquez sur le menu correspondant.</li>
+
+<li>
+La solution la plus "UNIXienne" : Ouvrez un "Shell" (xterm sous X-Window)
+et tapez le nom de votre application.</li>
+</ul>
+
+<h2>
+<a NAME="UNIX Shell : csh"></a>Shell : bash</h2>
+Le shell par d&eacute;faut, quand vous ouvrez un&nbsp; Shell, est "bash".
+Il est possible d'en activer&nbsp; d'autres qui sont&nbsp; plus ou moins
+pratique (exemple :"tcsh").
+<p>Les points communs &agrave; tous les shells :
+<ul>
+<li>
+Le premier mot qui est tap&eacute; sur la ligne est la commande ( ex :
+<tt>ls</tt>
+).</li>
+
+<li>
+Les mot qui suivent la commande et qui sont pr&eacute;c&eacute;d&eacute;
+par un "-" sont des options ( ex : <tt>ls -l</tt> ).</li>
+
+<li>
+Les autres mots qui suivent sont des arguments ( ex : <tt>ls -l /home/moi</tt>
+).</li>
+
+<li>
+<u>Les majuscules et les minuscules ne sont PAS &eacute;quivalentes.</u></li>
+
+<li>
+Le shell ex&eacute;cute uniquement les commandes qui se situent dans un
+r&eacute;pertoire sp&eacute;cifi&eacute; par la variable d'environnement
+<tt>path</tt>.</li>
+
+<li>
+Pour ex&eacute;cuter une commande qui ne se trouve pas dans le <tt>path</tt>,
+il faut sp&eacute;cifier sont chemin d'acc&egrave;s.</li>
+
+<li>
+Pour interrompre l'ex&eacute;cution d'une commande, pressez : &lt;Control>C.</li>
+
+<li>
+Pour ex&eacute;cuter deux commandes de suite sur une seul lignes, il faut
+les s&eacute;parer par un ";" ( ex : <tt>ls ; date ; echo "Fin"</tt>).</li>
+
+<li>
+Pour quitter le shell, tapez : <tt>exit</tt>.</li>
+
+<li>
+En cas d'erreur de frappe, utilisez la touche Back Space.</li>
+
+<li>
+Sou X-Window, avec le bouton de gauche de la souris, il est possible de
+s&eacute;lectionner du texte. Avec le bouton du milieu, il est possible
+de le coller sur la ligne de commande.</li>
+
+<li>
+Il est possible de rediriger les informations qu'une commande affiche &agrave;
+l'&eacute;cran dans un fichier &agrave; l'aide de ">" (ex : <tt>ls -l >
+/usr/tmp/tst.tmp</tt>). Si on utilise ">>" les informations contenues dans
+le fichier de destination ne seront pas &eacute;cras&eacute;es. (ex : <tt>ls
+</p>
+<ul><li>l >> /usr/tmp/tst.tmp</tt>).</li></li></ul>
+<p>
+<li>
+Il est aussi possible de rediriger les entr&eacute;es/sorties d'une commande
+vers une autre commande avec "|" (ex : <tt>ls -l | cut -c1,5</tt>). Cette
+m&eacute;thode s'appelle <tt>pipe</tt>.</li>
+
+<li>
+L'&eacute;toile "*" remplace zero ou plusieurs lettres dans un nom de fichier
+(ex : <tt>ls -l /usr/tmp/*.tmp</tt>).</li>
+
+<li>
+Le point d'interrogation remplace une lettre dans le nom d'un fichier (ex
+: <tt>net?cap?</tt>).</li>
+</ul>
+&nbsp;Les + de bash :
+<ul>
+<li>
+La touche &lt;TAB> compl&egrave;te les commandes et les noms de fichiers.</li>
+
+<li>
+les touches de fl&egrave;ches permettent de rapeller les commandes pr&eacute;c&eacute;dentes.</li>
+</ul>
+
+<h2>
+<a NAME="Le système de fichiers"></a>Le syst&egrave;me de fichiers</h2>
+Il y a 3 types de fichiers :
+<ul>
+<li>
+Les fichiers normaux ( textes, ex&eacute;cutables, applications ...)</li>
+
+<li>
+Les r&eacute;pertoires ( directory )</li>
+
+<li>
+Les fichiers sp&eacute;ciaux ( devices )</li>
+</ul>
+Tous les r&eacute;pertoires sont des sous-r&eacute;pertoires de la racine
+( / ).
+<br>Les r&eacute;pertoires peuvent contenir des fichiers normaux, des fichiers
+sp&eacute;ciaux et des sous-r&eacute;pertoires.
+<br>Les fichiers sp&eacute;ciaux sont, par convention, tous contenus dans
+le r&eacute;pertoire /dev ou un de ses sous-r&eacute;pertoires. Les fichiers
+sp&eacute;ciaux permettent l'acc&egrave;s au mat&eacute;riel de l'ordinateur.
+<br>Le r&eacute;pertoire /etc contient tous les scripts de configuration,
+/bin contient les programmes indispensables &agrave; UNIX, /var contient
+tous les fichiers dont la taille peut varier fr&eacute;quemment, /usr contient
+tout ce qui peut &ecirc;tre utile aux utilisateurs.
+<p><b>L'arborescences en bref :</b>
+<br><img SRC="file.jpg" height=280 width=644>
+<br>&nbsp;
+<p>Les r&eacute;pertoires o&ugrave; les utilisateurs doivent enregistrer
+leurs fichiers sont : "/usr/tmp" pour les fichiers temporaires et "/home/Nom_Utilisateur"
+(ex : "/home/guest") + ses sous-r&eacute;pertoires pour tous les fichiers
+normaux.
+<h2>
+<a NAME="Les chemins d'accès"></a>Les chemins d'acc&egrave;s</h2>
+Tous les fichiers ont un chemin d'acc&egrave;s, il peut &ecirc;tre relatif
+ou absolu. Il est relatif quand il ne commence pas par un "/".
+<br>Un chemin relatif indique le chemin d'acc&egrave;s par rapport au r&eacute;pertoire
+courant.
+<p>Exemple :
+<ul><tt>linux10 # pwd</tt>
+<br><tt>/home/guest</tt>
+<br><tt>linux10 # ls .netscape</tt>
+<br><tt>cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; history.list</tt>
+<br><tt>history.db</tt>
+<br><tt>linux10 # ls /home/guest/.netscape</tt>
+<br><tt>cache&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; history.list</tt>
+<br><tt>history.db</tt>
+<br><tt>linux10 #</tt></ul>
+Nous nous trouvons dans le r&eacute;pertoire "/home/guest". Par un chemin
+relatif, nous affichons la liste des fichiers contenus dans le sous-r&eacute;pertoire
+".netscape", puis la m&ecirc;me chose avec un chemin absolu.
+<p>La command <b>pwd</b> indique le chemin absolu du r&eacute;pertoire
+courant. La commande <b>cd</b> permet de changer de r&eacute;pertoire courant.
+<p>Tous les r&eacute;pertoires, m&ecirc;me si ils sont vides, contiennent
+2 pseudo-sous-r&eacute;pertoires : "." et "..".
+<br>Le "." repr&eacute;sente le r&eacute;pertoire lui-m&ecirc;me et ".."
+repr&eacute;sente le r&eacute;pertoire parent.
+<p>Exemple :
+<ul><tt>linux10 # pwd</tt>
+<br><tt>/home/guest</tt>
+<br><tt>linux10 # ls -a /home/guest</tt>
+<br><tt>.</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.netscape
+<br><tt>..</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.profile
+<br><tt>linux10 # ls -a .</tt>
+<br><tt>.</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.netscape
+<br><tt>..</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.profile
+<br><tt>linux10 # ls -a /home</tt>
+<br><tt>.</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+user1
+<br><tt>..</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+guest
+<br><tt>linux10 # ls -a ..</tt>
+<br><tt>.</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+user1
+<br><tt>..</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+guest
+<br><tt>linux10 # ls -a ../guest</tt>
+<br><tt>.</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.netscape
+<br><tt>..</tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+.profile
+<br><tt>linux10 # cd ..</tt>
+<br><tt>linux10 # pwd</tt>
+<br><tt>/home</tt>
+<br><tt>linux10 #</tt></ul>
+
+<h2>
+&nbsp;<a NAME="Nom des fichiers et répertoires"></a>Nom des fichiers et
+r&eacute;pertoires</h2>
+Les noms de fichier et de r&eacute;pertoires peuvent contenir sans aucun
+probl&egrave;me les caract&egrave;res suivants :
+<ul><tt>ABCDEFGHIJKLMNOPQRSTUVWXYZ</tt>
+<br><tt>abcdefghijklmnopqrstuvwxyz</tt>
+<br><tt>0123456789</tt>
+<br><tt>,_</tt></ul>
+Il est aussi possible d'utiliser ".", "+" et "-". Mais pas comme premier
+caract&egrave;re du nom. Si vous cr&eacute;ez un nom de fichier commen&ccedil;ant
+par un ".", il sera cach&eacute;. C'est dire qu'il faudra utiliser la commande
+"<tt>ls -a</tt>" pour le voir. Il ne faut jamais utiliser le "+" ou le
+"-" au d&eacute;but du nom, car certaine commandes le consid&eacute;rerait
+comme une option. Les espaces sont aussi interdits.
+<p>Il peut y avoir jusqu'&agrave; 255 caract&egrave;res dans un nom de
+fichier ou de r&eacute;pertoire.
+<p>Il est possible de donner 2 ou plusieurs nom &agrave; un fichier avec
+la commande <b>ln</b>. Pour cr&eacute;er un r&eacute;pertoire on utilise
+<b>mkdir</b>.
+<br>&nbsp;
+<h2>
+<a NAME="Les droits d'accès"></a>Les droits d'acc&egrave;s</h2>
+Tous les utilisateurs ont le droit d'ex&eacute;cuter, de lire et d'&eacute;crire
+dans des fichiers qu'ils ont cr&eacute;es eux-m&ecirc;mes. L'utilisateur
+root &agrave; tous les droits, il peut tout ex&eacute;cuter, tout lire,
+&eacute;crire dans tous les fichiers et tous les supprimer. L'utilisateur
+guest a le droit de lire presque tous les fichiers, d'en ex&eacute;cuter
+une bonne partie et d'en modifier aucun. Les droits des autres utilisateurs
+d&eacute;pendent du groupe dont ils font partie.
+<p>Chaque fichier a 3 cat&eacute;gories de droits d'acc&egrave;s :
+<ul>
+<li>
+le cr&eacute;ateur du fichier</li>
+
+<li>
+le groupe d'utilisateurs dont fait partie le cr&eacute;ateur du fichier</li>
+
+<li>
+le reste des utilisateurs</li>
+</ul>
+La commande <b>ls -l</b> renseigne sur ces droits, <b>chmod</b> change
+ces droits.
+<p>r : lecture autoris&eacute;e
+<br>w : &eacute;criture autoris&eacute;e
+<br>x : ex&eacute;cution autoris&eacute;e
+<table BORDER COLS=4 WIDTH="74%" >
+<tr>
+<td>
+<center>type du fichier</center>
+</td>
+
+<td>
+<center>droits du cr&eacute;ateur</center>
+</td>
+
+<td>
+<center>droits des utilisateurs du groupe du cr&eacute;ateur</center>
+</td>
+
+<td>
+<center>droits de tous les autres utilisateurs</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>-</center>
+</td>
+
+<td>
+<center>---</center>
+</td>
+
+<td>
+<center>---</center>
+</td>
+
+<td>
+<center>---</center>
+</td>
+</tr>
+</table>
+Exemple :
+<ul><tt>linux10 # ls -l</tt>
+<br><tt>drwxrwxr-x&nbsp; 1 root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1024 Apr 27 20:45 CMD/</tt>
+<br><tt>-rwxr-xr-x&nbsp; 1 guest&nbsp;&nbsp;&nbsp;&nbsp; users&nbsp;&nbsp;&nbsp;&nbsp;
+1290 Apr 27 20:34 hello_world</tt>
+<br><tt>-rw-rw-r--&nbsp; 1 guest&nbsp;&nbsp;&nbsp;&nbsp; users&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+450 Jun&nbsp; 6 11:23 mon_fichier.txt</tt>
+<br><tt>linux10 #</tt></ul>
+<i>CMD</i> est un r&eacute;pertoire, le cr&eacute;ateur et son groupe ont
+tous les droits, les autres ne peuvent pas &eacute;crire dans ce r&eacute;pertoire,
+ni le supprimer.
+<p><i>hello_world </i>est un fichier ex&eacute;cutable par tout le monde,
+le cr&eacute;ateur est le seul &agrave; pouvoir le modifier ou le supprimer.
+<p><i>mon_fichier.txt </i>est lisible par tout le monde, le cr&eacute;ateur
+et son groupe peuvent le supprimer.
+<br>&nbsp;
+<h2>
+<a NAME="Les processus"></a>Les processus</h2>
+Un application, une commande ou un programme lorsqu'ils sont charg&eacute;s
+dans la m&eacute;moire puis ex&eacute;cut&eacute;s deviennent des processus.
+Chaque processus &agrave; un num&eacute;ro d'identification PID.
+<p>La commande <b>ps -x</b> affiche tous les processus qui tournent actuellement.
+La commande <b>killall</b> stop tous les processus du m&ecirc;me nom. La
+commande <b>kill -9</b> stop un seul processus.
+<p>Exemple :
+<ul><tt>linux10 # ps -x</tt>
+<br><tt>PID&nbsp; TTY STAT&nbsp; TIME COMMAND</tt>
+<br><tt>190&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 netscape</tt>
+<br><tt>191&nbsp; pp0 R&nbsp;&nbsp;&nbsp;&nbsp; 0:00 hello_world</tt>
+<br><tt>234&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 hello_world</tt>
+<br><tt>239&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 netscape</tt>
+<br><tt>linux10 # killall netscape</tt>
+<br><tt>linux10 # ps -x</tt>
+<br><tt>PID&nbsp; TTY STAT&nbsp; TIME COMMAND</tt>
+<br><tt>191&nbsp; pp0 R&nbsp;&nbsp;&nbsp;&nbsp; 0:00 hello_world</tt>
+<br><tt>234&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 hello_world</tt>
+<br><tt>linux10 # kill -9 191</tt>
+<br><tt>PID&nbsp; TTY STAT&nbsp; TIME COMMAND</tt>
+<br><tt>234&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 hello_world</tt>
+<br><tt>linux10 #</tt></ul>
+Toutes les commandes peuvent devenir des processus d'arri&egrave;re plan,
+si on leur ajoute un "&amp;". C'est &agrave; dire que l'on perd le contr&ocirc;le
+direct de la commande (&lt;CONTROL>C ne stop plus l'ex&eacute;cution de
+la commande). Le seul moyen de l'arr&ecirc;ter est d'utiliser <b>kill </b>ou
+<b>killall</b>.
+L'avantage de lancer une commande en arri&egrave;re plan, est que l'on
+peut imm&eacute;diatement relancer une autre commande dans le shell.
+<p>Exemple :
+<ul><tt>linux10 # netscape&amp;</tt>
+<br><tt>linux10 # xedit&amp;</tt>
+<br><tt>linux10 #</tt></ul>
+
+<h2>
+&nbsp;<a NAME="UNIX en réseaux"></a>UNIX en r&eacute;seaux</h2>
+Unix dispose de plusieurs commandes pour travailler en r&eacute;seau, les
+plus utilis&eacute;es sont <b>rcp</b>, <b>ftp</b>, <b>rlogin</b>, <b>ping</b>,
+<b>telnet</b>
+et <b>rsh</b>.
+<br>Les&nbsp; fonctions de UNIX sp&eacute;cifiques aux r&eacute;seaux permettent
+de :
+<ul>
+<li>
+Transf&eacute;rer des fichiers d'une machine &agrave; l'autre (ex : <tt>rcp
+guest@linux10:/usr/tmp/log.tmp root@linux20:/usr/tmp</tt> ).</li>
+
+<li>
+Ex&eacute;cuter des programmes sur une machine &agrave; distance (ex :
+<tt>rsh
+guest@linux10 "ls /usr/tmp"</tt> ).</li>
+
+<li>
+Ouvrir une session de terminal &agrave; distance (ex : <tt>rlogin -l guest
+ovens10</tt> ).</li>
+
+<li>
+Int&eacute;grer des fichiers d'une machine distante dans l'arborescence
+d'une autre machine (ex : <tt>mount linux10:/usr/tmp /mnt</tt> ).</li>
+</ul>
+<i>Lancer des commandes &agrave; distance peut &ecirc;tre relativement
+amusant, malheureusement cela peut &ecirc;tre nettement moins dr&ocirc;le
+pour celui qui travail sur la station cible. Voir appar&ecirc;tre une image
+en plain &eacute;cran ou un son &agrave; volume maximal lorsque l'on effectue
+une op&eacute;ration d&eacute;licate, peut engendrer une mauvaise r&eacute;action
+de l'utilisateur et lui faire perdre des donn&eacute;es. Sans compter que
+la surcharge momentan&eacute;e du processeur peut, dans certaines conditions,
+faire totalement "planter" le syst&egrave;me. Donc, n'abusez pas des fonctionnalit&eacute;s
+de UNIX en r&eacute;seau, faites ce que voulez avec votre station, mais
+respectez celles des autres.</i>
+<br>&nbsp;
+<p>Les donn&eacute;es sont transmises entre les deux machines par les interfaces
+ethernet qui sont reli&eacute;es entre elles par un c&acirc;ble.
+<br>Les donn&eacute;es ne sont pas transmises tel quelles sur le c&acirc;ble,
+on leur ajoute des ent&ecirc;tes qui servent &agrave; savoir qui a envoy&eacute;
+les donn&eacute;es et &agrave; qui elles sont destin&eacute;es. UNIX utilise
+en g&eacute;n&eacute;ral le protocole TCP/IP pour communiquer entre les
+machines.
+<br>Chaque machine &agrave; un num&eacute;ro unique (ex : 192.34.46.2)
+appel&eacute; "IP address". Chaque machine &agrave; un nom (HostName),
+UNIX convertit automatiquement ce nom en "IP address". Vous devez donc
+conna&icirc;tre soit l' "IP address", soit le "HostName" d'une machine
+pour pouvoir y acc&egrave;der &agrave; distance.
+<br>&nbsp;
+<table BORDER CELLSPACING=0 WIDTH="100%" >
+<tr>
+<td ALIGN=CENTER VALIGN=CENTER>
+<center>ent&ecirc;te ethernet</center>
+</td>
+
+<td>
+<center>&nbsp;&nbsp;&nbsp; ent&ecirc;te internet&nbsp;</center>
+</td>
+
+<td>
+<center>donn&eacute;es</center>
+</td>
+</tr>
+
+<tr>
+<td BGCOLOR="#33CCFF">
+<center>0x89 0xf8 0xac 0x78 0x56 0xe2</center>
+</td>
+
+<td BGCOLOR="#33CCFF">
+<center>192.34.46.2</center>
+</td>
+
+<td BGCOLOR="#33CCFF">
+<center>0111110101011111010000..........1111101110101010101110</center>
+</td>
+</tr>
+</table>
+
+<p>La commande <b>last</b> permet de savoir le nom des derniers utilisateurs
+qui ont ouverts une session sur un syst&egrave;me.
+<h2>
+<a NAME="Les commandes"></a>Les commandes :</h2>
+UNIX dispose d'&eacute;normement de commandes, qui ont en plus plusieurs
+options. La seule fa&ccedil;on de conna&icirc;tre toutes les commandes
+disponibles et leurs options est d'utiliser <b>man</b> ou <b>xman</b>.
+<br>L'option "<b>-k</b>" de <b>man </b>permet de faire un recherche par
+mot cl&eacute; (Ex: <tt><font size=+1>man -k sound</font></tt>).
+<center><b><tt><blink><font size=+4>man</font></blink></tt></b>
+<br><b><tt><blink><font size=+3>man man man man man man man man ...</font></blink></tt></b></center>
+
+<p><b>Voici une liste non-exhaustive des commandes standards de UNIX :</b>
+<br>&nbsp;
+<table BORDER CELLSPACING=0 CELLPADDING=0 WIDTH="100%" >
+<tr>
+<td>
+<center><b><font size=+1>Commande</font></b></center>
+</td>
+
+<td>
+<center><b><font size=+1>Description de la commande</font></b></center>
+</td>
+</tr>
+
+<tr>
+<td><tt>alias</tt></td>
+
+<td><tt>D&eacute;finition de pseudo commandes. ex : alias dir="ls -l"</tt></td>
+</tr>
+
+<tr>
+<td><tt>ar</tt></td>
+
+<td><tt>Archivage de fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>at</tt></td>
+
+<td><tt>Ex&eacute;cution decal&eacute;e dans le temps d'une commande. ex
+: at 1615 &lt; toto.run</tt></td>
+</tr>
+
+<tr>
+<td><tt>awk</tt></td>
+
+<td><tt>Langage de programmation.</tt></td>
+</tr>
+
+<tr>
+<td><tt>banner</tt></td>
+
+<td><tt>Affichage de grands carat&egrave;res. ex : banner hooops&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td><tt>basename</tt></td>
+
+<td><tt>Retoune le nom du ficher seul dans un chemin absolu.&nbsp;</tt>
+<br><tt>ex : basename /usr/people/converse/converse</tt></td>
+</tr>
+
+<tr>
+<td><tt>bg</tt></td>
+
+<td><tt>Met un processus en arri&egrave;re plan.</tt></td>
+</tr>
+
+<tr>
+<td><tt>break</tt></td>
+
+<td><tt>Interruption d'une boucle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>breaksw</tt></td>
+
+<td><tt>Interruption de switch.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cal</tt></td>
+
+<td><tt>Affiche un calendrier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cancel</tt></td>
+
+<td><tt>Suppression d'une impression en cours.</tt></td>
+</tr>
+
+<tr>
+<td><tt>case</tt></td>
+
+<td><tt>Decision &agrave; choix multiples.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cat</tt></td>
+
+<td><tt>Affiche le contenu d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>gcc</tt></td>
+
+<td><tt>Compilateur C.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cd</tt></td>
+
+<td><tt>Changement de r&eacute;peroire courant.</tt></td>
+</tr>
+
+<tr>
+<td><tt>chgrp</tt></td>
+
+<td><tt>Modifie le groupe cr&eacute;ateur d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>chmod</tt></td>
+
+<td><tt>Modifie les droits d'un fichier. ex : chmod +x execut_me</tt></td>
+</tr>
+
+<tr>
+<td><tt>chown</tt></td>
+
+<td><tt>Changement du propri&eacute;taire d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>chroot</tt></td>
+
+<td><tt>Indique une racine virtuelle &agrave; une commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>coltabl</tt></td>
+
+<td><tt>Modifie les valeurs par d&eacute;faut de l'odre de tri.</tt></td>
+</tr>
+
+<tr>
+<td><tt>continue</tt></td>
+
+<td><tt>Reprend l'ex&eacute;cution d'une boucle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cp</tt></td>
+
+<td><tt>Copie un ou des fichiers. ex : cp toto.txt titi.txt</tt></td>
+</tr>
+
+<tr>
+<td><tt>cpio</tt></td>
+
+<td><tt>Archivage et d&eacute;sarchivage.</tt></td>
+</tr>
+
+<tr>
+<td><tt>crontab</tt></td>
+
+<td><tt>Execution d'une commande &agrave; intervals r&eacute;guliers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cu</tt></td>
+
+<td><tt>Liaison avec une machine par modem.</tt></td>
+</tr>
+
+<tr>
+<td><tt>cut</tt></td>
+
+<td><tt>Coupe des fichiers en colonnes. ex : cat toto.txt | cut -d "-"
+</p>
+<ul><li>f3,8</tt></td></li></ul>
+<p></tr>
+
+<tr>
+<td><tt>date</tt></td>
+
+<td><tt>Affiche la date actuelle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>dd</tt></td>
+
+<td><tt>Copie et conversion de fichiers.&nbsp;</tt>
+<br><tt>ex : dd if=/usr/tmp/toto.txt of=/tmp/titi.txt</tt></td>
+</tr>
+
+<tr>
+<td><tt>default</tt></td>
+
+<td><tt>Choix par d&eacute;faut.&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td><tt>df</tt></td>
+
+<td><tt>Affiche l'espace utilis&eacute; sur le syst&egrave;me de fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>diff</tt></td>
+
+<td><tt>Affiche les diff&eacute;rences entre 2 fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>du</tt></td>
+
+<td><tt>Affiche l'espace utilis&eacute; du disque.</tt></td>
+</tr>
+
+<tr>
+<td><tt>echo</tt></td>
+
+<td><tt>Affiche du texte. ex : echo "hello world !"</tt></td>
+</tr>
+
+<tr>
+<td><tt>ed</tt></td>
+
+<td><tt>Editeur ligne.</tt></td>
+</tr>
+
+<tr>
+<td><tt>egrep</tt></td>
+
+<td><tt>Affiche toutes les lignes qui contiennent un mot recherch&eacute;.&nbsp;</tt>
+<br><tt>ex : cat toto.txt | egrep 'titi'</tt></td>
+</tr>
+
+<tr>
+<td><tt>env</tt></td>
+
+<td><tt>Affiche et modifie les variables d'environnement.</tt></td>
+</tr>
+
+<tr>
+<td><tt>eval</tt></td>
+
+<td><tt>Evalue plusieurs foix le contenu d'une ligne de commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ex</tt></td>
+
+<td><tt>Editeur ligne.</tt></td>
+</tr>
+
+<tr>
+<td><tt>exit</tt></td>
+
+<td><tt>Sortie d'un script ou d'un shell.</tt></td>
+</tr>
+
+<tr>
+<td><tt>export</tt></td>
+
+<td><tt>Export les variables dans les shells enfants.</tt></td>
+</tr>
+
+<tr>
+<td><tt>expr</tt></td>
+
+<td><tt>Evaluation d'une expression. ex : echo `eval 2 + 2`</tt></td>
+</tr>
+
+<tr>
+<td><tt>false</tt></td>
+
+<td><tt>Valeure de retour d'un script shell.</tt></td>
+</tr>
+
+<tr>
+<td><tt>fc</tt></td>
+
+<td><tt>Rappel des commandes pr&eacute;c&eacute;dentes</tt></td>
+</tr>
+
+<tr>
+<td><tt>fg</tt></td>
+
+<td><tt>Remet une commande d'arri&egrave;re plan au premier plan.</tt></td>
+</tr>
+
+<tr>
+<td><tt>fgrep</tt></td>
+
+<td><tt>Recherche rapide d'un mot dans un fichier.&nbsp;</tt>
+<br><tt>ex : fgrep "hello" toto.txt</tt></td>
+</tr>
+
+<tr>
+<td><tt>file</tt></td>
+
+<td><tt>Affiche le type d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>find</tt></td>
+
+<td><tt>Cherche un fichier. ex : find / -name "t?t?.txt" -print</tt></td>
+</tr>
+
+<tr>
+<td><tt>for</tt></td>
+
+<td><tt>Boucle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>foreach</tt></td>
+
+<td><tt>Boucle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>goto</tt></td>
+
+<td><tt>Saut.</tt></td>
+</tr>
+
+<tr>
+<td><tt>grep</tt></td>
+
+<td><tt>Recherche d'un mot dans un fichier. ex : grep "ERROR" toto.txt</tt></td>
+</tr>
+
+<tr>
+<td><tt>cat /proc/pci</tt></td>
+
+<td><tt>Affiche la configuration mat&eacute;rielle.</tt></td>
+</tr>
+
+<tr>
+<td><tt>&nbsp;</tt></td>
+
+<td><tt>&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td><tt>history</tt></td>
+
+<td><tt>Affiche les derni&egrave;res commandes ex&eacute;cut&eacute;es.</tt></td>
+</tr>
+
+<tr>
+<td><tt>id</tt></td>
+
+<td><tt>Affiche les num&eacute;ros d'utilisateurs et de groupes.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ifconfig</tt></td>
+
+<td><tt>Affiche le nom des interfaces r&eacute;seau configur&eacute;es.</tt></td>
+</tr>
+
+<tr>
+<td><tt>if</tt></td>
+
+<td><tt>Si.</tt></td>
+</tr>
+
+<tr>
+<td><tt>jobs</tt></td>
+
+<td><tt>Affiche les processus d'arri&egrave;re plan.</tt></td>
+</tr>
+
+<tr>
+<td><tt>join</tt></td>
+
+<td><tt>Join deux fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>kill</tt></td>
+
+<td><tt>Envoie un signal &agrave; un processus. ex : kill -9 1458</tt></td>
+</tr>
+
+<tr>
+<td><tt>last</tt></td>
+
+<td><tt>Affiche le nom des derniers utilisateurs de la machine.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ld</tt></td>
+
+<td><tt>Linker.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ln</tt></td>
+
+<td><tt>Cr&eacute;ation d'un lien sur un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>logname</tt></td>
+
+<td><tt>Affiche le nom de l'utilisateur.</tt></td>
+</tr>
+
+<tr>
+<td><tt>logout</tt></td>
+
+<td><tt>Fin d'une session.</tt></td>
+</tr>
+
+<tr>
+<td><tt>lpr</tt></td>
+
+<td><tt>Impression.</tt></td>
+</tr>
+
+<tr>
+<td><tt>lpq -l</tt></td>
+
+<td><tt>Affiche l'&eacute;tat de l'imprimante.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ls</tt></td>
+
+<td><tt>Donne la liste des fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>m4</tt></td>
+
+<td><tt>Pr&eacute;processeur de macro.</tt></td>
+</tr>
+
+<tr>
+<td><tt>mail</tt></td>
+
+<td><tt>E-Mail.</tt></td>
+</tr>
+
+<tr>
+<td><tt>mailx</tt></td>
+
+<td><tt>E-Mail.</tt></td>
+</tr>
+
+<tr>
+<td><tt>make</tt></td>
+
+<td><tt>Contruction de programmes.</tt></td>
+</tr>
+
+<tr>
+<td><tt>man</tt></td>
+
+<td><tt>Aide.</tt></td>
+</tr>
+
+<tr>
+<td><tt>mesg</tt></td>
+
+<td><tt>Verouillage des acc&egrave;s &agrave; l'&eacute;cran par d'autres
+utilistateurs.</tt></td>
+</tr>
+
+<tr>
+<td><tt>mknod</tt></td>
+
+<td><tt>Cr&eacute;ation de fichiers sp&eacute;ciaux.</tt></td>
+</tr>
+
+<tr>
+<td><tt>more</tt></td>
+
+<td><tt>Affichage d'un fichier page par page.</tt></td>
+</tr>
+
+<tr>
+<td><tt>mv</tt></td>
+
+<td><tt>D&eacute;placement de fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>netstat</tt></td>
+
+<td><tt>Affiche l'&eacute;tat du r&eacute;seau.</tt></td>
+</tr>
+
+<tr>
+<td><tt>newgrp</tt></td>
+
+<td><tt>Change l'appatenance &agrave; un groupe d'utilisateurs.</tt></td>
+</tr>
+
+<tr>
+<td><tt>nice</tt></td>
+
+<td><tt>Modifie la priorit&eacute; de traitement d'une commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>nohup</tt></td>
+
+<td><tt>Fait ignorer les sigaux &agrave; une commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>nvram</tt></td>
+
+<td><tt>Affiche le contenu de la m&eacute;moire non-volatile.</tt></td>
+</tr>
+
+<tr>
+<td><tt>od</tt></td>
+
+<td><tt>Affiche les donn&eacute;es en hexad&eacute;cimal.</tt></td>
+</tr>
+
+<tr>
+<td><tt>passwd</tt></td>
+
+<td><tt>Change de mot de passe.</tt></td>
+</tr>
+
+<tr>
+<td><tt>perl</tt></td>
+
+<td><tt>Programmation.</tt></td>
+</tr>
+
+<tr>
+<td><tt>pg</tt></td>
+
+<td><tt>Affichage page par page d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ping</tt></td>
+
+<td><tt>Test du r&eacute;seau.</tt></td>
+</tr>
+
+<tr>
+<td><tt>pr</tt></td>
+
+<td><tt>Formatage des donn&eacute;es.</tt></td>
+</tr>
+
+<tr>
+<td><tt>print</tt></td>
+
+<td><tt>Affiche du texte.</tt></td>
+</tr>
+
+<tr>
+<td><tt>printenv</tt></td>
+
+<td><tt>Affiche les variables d'environnement.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ps</tt></td>
+
+<td><tt>Affiche les processus en cours.</tt></td>
+</tr>
+
+<tr>
+<td><tt>pwd</tt></td>
+
+<td><tt>Affiche le r&eacute;pertoire actif.</tt></td>
+</tr>
+
+<tr>
+<td><tt>read</tt></td>
+
+<td><tt>Lit des donn&eacute;es depuis le clavier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>readonly</tt></td>
+
+<td><tt>Protection des variables.</tt></td>
+</tr>
+
+<tr>
+<td><tt>repeat</tt></td>
+
+<td><tt>R&eacute;peter l'ex&eacute;cution d'une commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>return</tt></td>
+
+<td><tt>Saut en arri&egrave;re dans un script.</tt></td>
+</tr>
+
+<tr>
+<td><tt>rlogin</tt></td>
+
+<td><tt>Ouverture d'une session &agrave; distance.</tt></td>
+</tr>
+
+<tr>
+<td><tt>rm</tt></td>
+
+<td><tt>Efface des fichiers.</tt></td>
+</tr>
+
+<tr>
+<td><tt>rmdir</tt></td>
+
+<td><tt>Efface un r&eacute;pertoire.</tt></td>
+</tr>
+
+<tr>
+<td><tt>rsh</tt></td>
+
+<td><tt>Shell &agrave; distance.</tt></td>
+</tr>
+
+<tr>
+<td><tt>sed</tt></td>
+
+<td><tt>Editeur de texte.</tt></td>
+</tr>
+
+<tr>
+<td><tt>select</tt></td>
+
+<td><tt>S&eacute;lection de menu.</tt></td>
+</tr>
+
+<tr>
+<td><tt>set</tt></td>
+
+<td><tt>Affiche toutes les variables.</tt></td>
+</tr>
+
+<tr>
+<td><tt>sh</tt></td>
+
+<td><tt>Bourne-shell.</tt></td>
+</tr>
+
+<tr>
+<td><tt>shift</tt></td>
+
+<td><tt>D&eacute;calage des param&egrave;tres.</tt></td>
+</tr>
+
+<tr>
+<td><tt>sleep</tt></td>
+
+<td><tt>Interrompt le processus pendant un certain temps.</tt></td>
+</tr>
+
+<tr>
+<td><tt>sort</tt></td>
+
+<td><tt>Tri de donn&eacute;es.</tt></td>
+</tr>
+
+<tr>
+<td><tt>strings</tt></td>
+
+<td><tt>Extraction des caract&egrave;res lisibles d'un fichier binaire.</tt></td>
+</tr>
+
+<tr>
+<td><tt>stty</tt></td>
+
+<td><tt>Configuration d'une interface s&eacute;rie.</tt></td>
+</tr>
+
+<tr>
+<td><tt>su</tt></td>
+
+<td><tt>Changement d'utilisateur.</tt></td>
+</tr>
+
+<tr>
+<td><tt>switch</tt></td>
+
+<td><tt>Choix multiple.</tt></td>
+</tr>
+
+<tr>
+<td><tt>sync</tt></td>
+
+<td><tt>Vide les m&eacute;moires tempons des p&eacute;riph&eacute;riques.&nbsp;</tt></td>
+</tr>
+
+<tr>
+<td><tt>tail</tt></td>
+
+<td><tt>Affiche la derni&egrave;re partie d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tar</tt></td>
+
+<td><tt>Archivage.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tclsh</tt></td>
+
+<td><tt>Programmation.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tcsh</tt></td>
+
+<td><tt>C-shell &eacute;tendu.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tee</tt></td>
+
+<td><tt>Duplication d'un flux de donn&eacute;es.</tt></td>
+</tr>
+
+<tr>
+<td><tt>telnet</tt></td>
+
+<td><tt>Ouverture d'une session &agrave; distance.</tt></td>
+</tr>
+
+<tr>
+<td><tt>test</tt></td>
+
+<td><tt>Test d'une expression.</tt></td>
+</tr>
+
+<tr>
+<td><tt>time</tt></td>
+
+<td><tt>Affiche la dur&eacute;e d'ex&eacute;cution d'une commande.</tt></td>
+</tr>
+
+<tr>
+<td><tt>touch</tt></td>
+
+<td><tt>Modification de la date de cr&eacute;ation d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tr</tt></td>
+
+<td><tt>Conversion de caract&egrave;re.</tt></td>
+</tr>
+
+<tr>
+<td><tt>trap</tt></td>
+
+<td><tt>Modification de la r&eacute;action aux signaux.</tt></td>
+</tr>
+
+<tr>
+<td><tt>true</tt></td>
+
+<td><tt>Valeur de retour pour un script.</tt></td>
+</tr>
+
+<tr>
+<td><tt>tty</tt></td>
+
+<td><tt>Affichage des nom des terminaux.</tt></td>
+</tr>
+
+<tr>
+<td><tt>ulimit</tt></td>
+
+<td><tt>Taille maximale d'un fichier.</tt></td>
+</tr>
+
+<tr>
+<td><tt>umask</tt></td>
+
+<td><tt>D&eacute;finition des droits par d&eacute;faut.</tt></td>
+</tr>
+
+<tr>
+<td><tt>unalias</tt></td>
+
+<td><tt>Suppression d'un alias.</tt></td>
+</tr>
+
+<tr>
+<td><tt>unset</tt></td>
+
+<td><tt>Supression d'une variable.</tt></td>
+</tr>
+
+<tr>
+<td><tt>until</tt></td>
+
+<td><tt>Jusqu'&agrave; ce que...</tt></td>
+</tr>
+
+<tr>
+<td><tt>uucp</tt></td>
+
+<td><tt>Copie &agrave; distance.</tt></td>
+</tr>
+
+<tr>
+<td><tt>uuname</tt></td>
+
+<td><tt>Affiche les noms des machines.</tt></td>
+</tr>
+
+<tr>
+<td><tt>uustat</tt></td>
+
+<td><tt>Etat de uucp.</tt></td>
+</tr>
+
+<tr>
+<td><tt>uux</tt></td>
+
+<td><tt>Ex&eacute;cution &agrave; distance.</tt></td>
+</tr>
+
+<tr>
+<td><tt>vi</tt></td>
+
+<td><tt>Editeur de texte UNIX standard. vi a 2 modes de fonctionnement
+: commande et saisie.&nbsp;</tt>
+<br><tt>Pour entrer ou revenir en mode commande tapez sur la touche &lt;ESC>.&nbsp;</tt>
+<ul>
+<li>
+<tt>":q!"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quitter sans sauver</tt></li>
+
+<li>
+<tt>":wq"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sauver et quitter</tt></li>
+
+<li>
+<tt>"i" ou "a"&nbsp; entrer en mode saisie</tt></li>
+
+<li>
+<tt>"x"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; effacer le caract&egrave;re
+sous le curseur</tt></li>
+
+<li>
+<tt>"dd"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; effacer la ligne sous
+le curseur</tt></li>
+
+<li>
+<tt>"h"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d&eacute;placer
+le curseur vers la gauche</tt></li>
+
+<li>
+<tt>"i"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d&eacute;placer
+le curseur vers la droite</tt></li>
+
+<li>
+<tt>"k"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d&eacute;placer
+le curseur vers le haut</tt></li>
+
+<li>
+<tt>"j"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; d&eacute;placer
+le curseur vers le bas</tt></li>
+
+<li>
+<tt>"&lt;Ctrl>F"&nbsp;&nbsp; remonter d'une page</tt></li>
+
+<li>
+<tt>"&lt;Ctrl>B"&nbsp;&nbsp; descendre d'une page</tt></li>
+
+<li>
+<tt>"y"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; copier</tt></li>
+
+<li>
+<tt>"p"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; coller</tt></li>
+
+<li>
+<tt>"/"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rechercher un mot
+dans le texte</tt></li>
+</ul>
+<tt>vi a beaucoup d'autres fonctions, consultez <b>man</b>.</tt></td>
+</tr>
+
+<tr>
+<td><tt>wait</tt></td>
+
+<td><tt>Attente d'un processus en arri&egrave;re plan.</tt></td>
+</tr>
+
+<tr>
+<td><tt>wall</tt></td>
+
+<td><tt>Envoi d'un message &agrave; tous les utilisateurs.</tt></td>
+</tr>
+
+<tr>
+<td><tt>wc</tt></td>
+
+<td><tt>Compte le nombre de mots.</tt></td>
+</tr>
+
+<tr>
+<td><tt>which</tt></td>
+
+<td><tt>Indique o&ugrave; se trouve la commande dans le path.</tt></td>
+</tr>
+
+<tr>
+<td><tt>while</tt></td>
+
+<td><tt>Tant que...</tt></td>
+</tr>
+
+<tr>
+<td><tt>who</tt></td>
+
+<td><tt>Affiche la liste des utilisateurs.</tt></td>
+</tr>
+
+<tr>
+<td><tt>whoami</tt></td>
+
+<td><tt>Affichage du nom d'utilisateur</tt></td>
+</tr>
+
+<tr>
+<td><tt>xterm</tt></td>
+
+<td><tt>Lance un nouveau Unix shell.</tt></td>
+</tr>
+
+<tr>
+<td><tt>wish</tt></td>
+
+<td><tt>Programmation graphique en Tcl/Tk.</tt></td>
+</tr>
+
+<tr>
+<td><tt>write</tt></td>
+
+<td><tt>Envoie un message &agrave; un autre utilisateur.</tt></td>
+</tr>
+
+<tr>
+<td><tt>xargs</tt></td>
+
+<td><tt>Combinaison de lignes de commandes et de saisies clavier.</tt></td>
+</tr>
+
+<tr>
+<td></td>
+
+<td></td>
+</tr>
+</table>
+
+<h2>
+&nbsp;<a NAME="Quelques exemples pratiques"></a>Quelques exemples pratiques</h2>
+Dans tous les exemples suivants, nous supposons que vous travaillez sur
+la station "linux10".
+<ul>&nbsp;</ul>
+<b>Deux fa&ccedil;ons de tuer un Netscape qui bloque la station :</b>
+<ul><tt>linux20# rlogin&nbsp; linux10</tt>
+<br><tt>linux10# ps -x</tt>
+<br><tt>PID&nbsp; TTY STAT&nbsp; TIME COMMAND</tt>
+<br><tt>190&nbsp; pp0 S&nbsp;&nbsp;&nbsp;&nbsp; 0:00 netscape</tt>
+<br><tt>191&nbsp; pp0 R&nbsp;&nbsp;&nbsp;&nbsp; 0:00 converse</tt>
+<br><tt>linux10# kill -9 190</tt></ul>
+ou
+<ul><tt>linux10# killall netscape</tt></ul>
+<b>Deux mani&egrave;res &eacute;quivalentes pour chercher toutes les lignes
+d'un fichier qui comportent un mot pr&eacute;cis :</b>
+<ul><tt>linux10# grep "error" /var/log/messages</tt>
+<br><tt>Jan&nbsp; 1 01:41:32 linux10 kernel: HPFS: map_sector: read error</tt>
+<br><tt>linux10# cat /var/log/messages | grep "ERROR"</tt>
+<br><tt>ERROR :&lt;Converse time out ></tt>
+<br><tt>TOTAL Number of ERROR Detected : 1</tt>
+<br><tt>linux10#</tt></ul>
+<b>Faire place nette apr&egrave;s une session mouvement&eacute;e de surf
+sur le WEB :</b>
+<ul><tt>linux10# cd .netscape</tt>
+<br><tt>linux10# rm history.db</tt>
+<br><tt>linux10# rm cookies</tt>
+<br><tt>linux10# rm -r cache/*</tt>
+<br><tt>linux10#</tt></ul>
+
+<p><br><b>Lire un fichier binaire (fichier "core" ou ex&eacute;cutable)
+:</b>
+<ul><tt>linux10# cat core | od -c | cut -c8,80 | tr -d " " | more</tt>
+<br><tt>ELF\007hj\056po</tt>
+<br><tt>hj7\08876d\045</tt>
+<br>...
+<br>ou plus simplement :
+<p><tt>linux10# strings core |more</tt>
+<br>&nbsp;</ul>
+<b>Chercher un fichier :</b>
+<ul><tt>linux10# find ./ -name "cookies" -print</tt>
+<br><tt>/usr/people/converse/.netscape/cookies</tt>
+<br><tt>linux10#</tt></ul>
+<b>Un petit programme &eacute;crit en Shell Script :</b>
+<ul><tt>linux10# cat >mon_prog</tt>
+<br><tt>#!/bin/sh</tt>
+<p><tt>echo -n "Entrez votre nom : "</tt>
+<br><tt>read nom</tt>
+<br><tt>echo "Bonjour "$nom", soyez le bienvenu dans le monde de UNIX."</tt>
+<br><tt>^D</tt>
+<br><tt>linux10# chmod +x mon_prog</tt>
+<br><tt>linux10# ./mon_prog</tt>
+<br><tt>Entrez votre nom : jml</tt>
+<br><tt>Bonjour jml, soyez le bienvenu dans le monde de UNIX.</tt>
+<br><tt>linux10#</tt></ul>
+A la place de "<tt>cat >mon_prog</tt>", vous pouvez utiliser "xedit <tt>
+mon_prog</tt>".
+<br>"<tt>^D</tt>" signifie qu'il faut presser sur &lt;Control>D.
+<h2>
+<a NAME="Bibliographie"></a>Bibliographie :</h2>
+
+<ul>
+<li>
+"UNIX", Michael Wielsch, Micro Application, 1995.</li>
+
+<li>
+"Le guide de Linux", Michael Wielsch, Micro Application, 1996.</li>
+
+<li>
+"Linux Installation and Getting Started", Matt Welsh, Sybex, 1995.</li>
+
+<li>
+"Linux Secrets", Naba Barkakati, Sybex, 1996.</li>
+
+<li>
+"Pentium Processors and Related Products", INTEL, Intel Literature, 1995.</li>
+</ul>
+
+<center>
+<br><b><tt>D&eacute;cembre 1997 - Juin 1999</tt></b></center>
+
+</div></div>
+</div>
+<footer class="mx-auto text-center text-muted" style="font-size:min(3vw, 12px);">
+Copyright &copy; 1997 - 2023 Jean-Marc Lienher
+</footer>
+
+<script src="../script.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

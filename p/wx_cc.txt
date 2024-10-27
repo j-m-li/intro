@@ -1,0 +1,53 @@
+// Programmation C++ avec wxWindows
+// g++ t.cc -I/usr/include/wxwin/x -I/usr/include/wxwin/base -I/usr/openwin/include/ -Dwx_xview -L/usr/openwin/lib/ -lwx_ol -lxview -lX11 -lolgx -lXpm 
+
+#include "wxwin/base/wx.h"
+class TheApp: public wxApp
+{
+        public:
+                TheApp(void);
+                wxFrame* OnInit(void);
+                static wxFrame* frame;
+		static wxPanel* panel;
+		static wxMultiText* text;
+		static wxButton* button;
+		static wxButton* quit;
+		void ButtonProc(wxButton& but, wxCommandEvent& event);
+		void QuitProc(wxButton& but, wxCommandEvent& event);
+};    
+
+TheApp theApp;
+
+wxFrame* TheApp::frame = NULL;
+wxPanel* TheApp::panel = NULL;
+wxMultiText* TheApp::text = NULL;
+wxButton* TheApp::button = NULL;
+wxButton* TheApp::quit = NULL;
+
+TheApp::TheApp()
+{
+	
+}
+
+wxFrame* TheApp::OnInit(void)
+{
+	frame = new wxFrame(NULL,"exemple",0,0,300,300);
+	frame->Show(TRUE);
+	panel = new wxPanel(frame,0, 0, 300, 300, 0, "TheMainFrame");
+	text = new wxMultiText(panel, (wxFunction)NULL, "", "mon nom", 
+				1, 1, 150, 100);
+	button = new wxButton(panel, (wxFunction)&ButtonProc, "hello");
+	quit = new wxButton(panel, (wxFunction)&QuitProc, "fin");
+	return((wxFrame*) frame);
+}
+
+void TheApp::ButtonProc(wxButton& but, wxCommandEvent& event)
+{
+	cout << text->GetValue()  << "\n";
+}
+
+void TheApp::QuitProc(wxButton& but, wxCommandEvent& event)
+{
+	frame->Show(False);
+	exit(0);
+}

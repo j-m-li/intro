@@ -1,0 +1,4 @@
+
+INPUT "Quel est ton nom? ", nom$
+PRINT "Hello "; nom$; ", QBasic te salue"
+SYSTEM

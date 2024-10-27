@@ -1,0 +1,8 @@
+#!/bin/csh
+
+set txt="Content-type: text/html"
+echo $txt
+echo
+echo "<H2>Il est "`date '+ %H heure %M minute'`".</H2>"
+
+

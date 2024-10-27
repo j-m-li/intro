@@ -1,0 +1,6 @@
+#!/usr/bin/tclsh
+
+set prompt "Quel est ton nom "
+puts  -nonewline "$prompt" 
+set nom [gets stdin] 
+puts "Hello $nom, Tcl te salue"

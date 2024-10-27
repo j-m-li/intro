@@ -1,0 +1,10 @@
+	PROGRAM exemple
+
+	CHARACTER*10 str
+10	WRITE (*,*) '\bQuel est ton nom? '
+	READ (*,*)  str
+	WRITE (*,*) '\bHello ', str, ', Fortran te salue'
+20	DO 30 i=1,6
+	WRITE (*,*) 'Boucle ', i
+30	CONTINUE
+	END	

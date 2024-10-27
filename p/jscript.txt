@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function update() {
+        document.forms[0].reponse.value = "Hello " + document.forms[0].nom.value + ", JavaScript te salue" 
+}
+// -->
+</SCRIPT>
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write("<FORM>\n")
+document.write("Quel est ton nom? ")
+document.write("<INPUT TYPE=\"text\" NAME=\"nom\" SIZE=\"25\" OnChange=\"update()\">\n")
+document.write("<INPUT TYPE=\"text\" NAME=\"reponse\" SIZE=\"60\">\n")
+document.write("</FORM>\n")
+document.forms[0].nom.focus()
+// -->
+</SCRIPT>
+</BODY>
+
+

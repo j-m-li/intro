@@ -1,0 +1,37 @@
+#!/bin/awk -f 
+
+BEGIN {
+	printf "Quel est ton login ? "
+	FS=":"
+} 
+
+{
+	login = $0 
+	print login, "\b, je recheche to accompte."
+	system( "cat /etc/passwd > /usr/tmp/recherche.tmp" )   
+	status = getline $0 < "/usr/tmp/recherche.tmp"
+	i = 1
+	while ( status > 0 ) {
+		print "+", i,"  accompte :",$1 
+		if ( $1 == login ) {
+			rep = $6 
+		}
+		if (( $1 ~ login ) && ( $1 != login )) {
+                        print $1, "a un login tres proche du tien" 
+                } 
+		status = getline $0 < "/usr/tmp/recherche.tmp"
+		i++
+        } 
+	system( "rm /usr/tmp/recherche.tmp" )
+	exit
+} 
+
+END {
+	if (rep != "") {
+		print login, "\b, ton repertoire est", rep
+		exit 0
+	} else {
+		print "je n'ai pas trouve ton accompte"
+		exit 1
+	}
+}

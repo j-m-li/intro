@@ -1,0 +1,153 @@
+#!/usr/bin/perl
+
+print "Content-type: text/plain\n\n";	
+	# - Affiche du texte sur la sortie standard
+	# \n represente un retour a la ligne
+	# \t represente une tabulation
+
+open(FILE1, ">/usr/tmp/tst_$$.txt");
+print FILE1 "Hello\n ... \n";
+close(FILE1);
+	# - Ouvre un fichier pour y ecrire (avec >> si le fichier existe les
+	#   donnes sont mises a la suite des anciennes
+	# - Ecrit dans le fichier
+	# - Ferme le fichier
+
+open(FILE2, "</usr/tmp/tst_$$.txt");
+$i=0;
+while(<FILE2>) {
+	print "ligne $i $_\n";
+	$i++;
+}
+close(FILE2);
+qx{rm /usr/tmp/tst_$$.txt};
+	# - Ouvre un fichier pour y lire des donnes
+	# - Initialise la variable i a 0
+	# - Lit ligne par ligne le fichier tant que la fin n'est pas atteinte
+	# - Affiche le numero de la ligne suivit du contenu de cette ligne
+	# - Ajoute 1 a la variable i
+	# - Fin de la boucle de lecture
+	# - Ferme le fichier
+
+$date=qx{date '+%d.%m.%Y'};
+chomp($date);
+print "Nous sommes le $date ...\n";
+	# - Initialise la variable date avec le texte qui est retourne par
+	#   la commande date executee dans un shell
+	# - Supprimme le retour a la ligne a la fin du la variable date
+	# - Affiche le resultat
+
+@table = ("zero", "un", "deux", "trois");
+@table = (@table, "quatre");
+for ($i=0; $i <= $#table; $i++) {
+	print "$i --- $table[$i]\n";
+}
+
+%hash = ("key", "val", "nom", "jml");
+foreach $clef (keys(%hash)) {
+	print "$clef contient $hash{$clef}\n";
+}  
+$hash{"perl"} = "top";
+delete $hash{'nom'};
+foreach $val (values(%hash)) {
+	print "$val est dans hash\n";
+}
+
+$i=3;
+if ($i<2) {
+	print "i est plus petit que 2\n";
+} elsif ($i==3) {
+	print "i egal 3\n";
+} else {
+	print "i n'est pas egal a 3 et n'est pas plus petit que 2\n";
+}
+
+$txt="yes or no";
+if ($txt eq "yes or no") {
+	print "txt egal yes or no\n";
+}
+if ($txt =~ m/OR NO/ig ) {
+	print "txt contient OR NO en majuscule ou en minuscule\n";
+}
+
+$txt="hello world\n";
+print $txt;
+$txt =~ tr/a-z/A-Z/;
+print $txt;
+$txt=~ s/WORLD/earth/g;
+print $txt;
+
+$vrai=-1;
+$faux=0;
+if ($vrai) { print "ok 1\n" };
+if (!$faux) { print "ok 2\n" }; 
+if ($vrai || $faux) { print "ok 3\n" };
+if ($vrai && $faux) { print "ok 4\n" };
+
+sub fonction 
+{
+	print "$_[0] plus $_[1] egal ";
+	return ($_[0] + $_[1]);
+}
+print fonction(2,3) . "\n"; 
+
+$txt="nom\tLienher\tprenom\tJean-Marc\tentreprise\tNickasil Production.\n";
+@donnes=split('\t',$txt);
+$i=0;
+foreach $data (@donnes) {
+	if ($i) {
+		print "$data\n";
+		$i=0;
+	} else {	
+		print "$data == ";
+		$i=1;
+	}
+}
+
+$txt="0123456789012345";
+$ind1 = index($txt,'23',0);
+$ind2 = index($txt,'23',$ind1+1);
+print "$txt\n";
+print substr($txt,$ind1,10) . "  index1=$ind1\n";
+print substr($txt,$ind2), "  index2=$ind2\n";
+
+print pack("c",0x41) . "\n";
+print unpack("H","A") . unpack("h","A") . "\n";
+print hex("0x41");
+
+@list = ("ABAAAA", "AAAAAA", "BBBBBB", "CCCCCC");
+while (<@list>) { print "$_\n" };
+print "tri\n";
+@list = sort {uc($a) cmp uc($b)} @list;
+while (<@list>) { print "$_\n" };
+@list = (3, 2, 5, 8, 1 ,7, 2);
+while (<@list>) { print "$_\n" };
+print "tri\n";
+@list = sort {$a <=> $b} @list;
+while (<@list>) { print "$_\n" };
+
+print "8 / 3 = " . (8 / 3) . "\n";
+print "int(8 / 3) = " . int(8 / 3) . "\n";
+print "8 % 3 = " . (8 % 3) . "\n";
+print "8 - 3 = " . (8 - 3) . "\n";
+print "8 + 3 = " . (8 + 3) . "\n";
+print "sqrt(8) = " . sqrt(8) . "\n";
+print "8 ** 2 = " . (8 ** 2) . "\n";
+
+print sprintf ("un nombre %.5f\n",2.89);
+
+use IO::Socket;
+$host="localhost";
+$port="80";
+$page="/";
+$remote = IO::Socket::INET->new(Proto => "tcp",
+                              PeerAddr => $host,
+                              PeerPort => $port, );
+
+$remote->autoflush(1);
+print $remote "GET $page\n";
+while (<$remote>) {
+      print $_;
+}
+close($remote);
+

@@ -1,0 +1,9 @@
+#/bin/sh
+
+txt="<H1>Affichage des variables d'environnement pour script cgi</H1>"
+echo -ne "Content-type: text/html\n\n"
+echo $txt
+echo  "<PRE>"
+printenv
+echo "</PRE>"
+

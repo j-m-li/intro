@@ -1,0 +1,36 @@
+#!/usr/bin/perl  -w
+# connection a un serveur HTTP sans utiliser IO::Socket
+
+require 5.002;
+use strict;
+use Socket;
+
+my $proto = getprotobyname('tcp');
+my $port = getservbyname('http', 'tcp');
+my ($host,$line,$hiine,$hoipaddr,$rtime,$pi,$p);
+$| = 1; # autoflush
+
+foreach $host (@ARGV) {
+    	socket(SOCKET, PF_INET, SOCK_STREAM, $proto)   || die "socket: $!";
+    	$hiine = gethostbyname($host)||die "not found $!";
+    	$hoipaddr = sockaddr_in($port, $hiine) || die "add : $!";
+    	connect(SOCKET, $hoipaddr) || die "bind: $!"; 
+    	$rtime = '';
+    	$p = select(SOCKET);
+    	$|=1;
+    	select($p);
+    	print SOCKET "GET / \n\n";
+	my $rin ='';
+	my $win = '';
+	my $ein = '';
+        vec($rin,fileno(SOCKET),1) = 1;
+        vec($win,fileno(SOCKET),1) = 1;
+        $ein = $rin | $win;
+	my $er=1;
+    	while (my $siz=select($rin, $win, $ein, 0.25) && ($er >0)) {
+        	$er=sysread(SOCKET, $rtime, $siz);
+        	print $rtime;
+    	}
+    	close(SOCKET);
+}
+

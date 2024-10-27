@@ -1,0 +1,7 @@
+#!/bin/sh
+
+echo -n "Quel est ton nom ? "
+read nom
+echo "Hello $nom, sh te salue"
+
+

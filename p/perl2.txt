@@ -1,0 +1,38 @@
+#!/usr/bin/perl5
+# Script CGI universel
+# - Support la methode de communication POST ou GET
+# - Prend en charge la conversion de caracteres speciaux
+
+sub getHtmlData() {
+	local(%in,$buffer,$i, $index, $key, $val, @in );
+        if ($ENV{'REQUEST_METHOD'} eq "POST") {
+               read (STDIN, $buffer, $ENV{'CONTENT_LENGTH'});
+        }
+        if ($ENV{'REQUEST_METHOD'} eq "GET") {
+               $buffer = $ENV{'QUERY_STRING'};
+        }
+        @in = split(/&/,$buffer);
+        $i=0;
+        while ($i <= $#in)  {
+               $in[$i] =~ s/\+/ /g;
+               $in[$i] =~ s/%(..)/pack("c",hex($1))/ge;
+               $index = index($in[$i],"=");
+               $key = substr($in[$i],0,$index);
+               $val = substr($in[$i],$index+1);
+               if (defined($in{$key})) { $in{$key} .= "\0" };
+               $in{$key} .= $val;
+               $i++;
+         }
+         return %in;
+}
+my %data = getHtmlData();
+print "Content-type: text/html\n\n<HTML>\n";
+print "<PRE>\n";
+my $vari;
+foreach $vari (keys(%data)) {
+         print "la variable $vari contient  $data{$vari}\n";
+}
+print "</PRE>\n";
+print "</HTML>\n";
+exit;
+

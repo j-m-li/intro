@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+char nom[255];
+
+void main(int argc, char *argv[])
+{
+	printf("Quel est ton nom? ");
+        fscanf(stdin,"%255s",nom);
+        printf("Hello %s, C te salue\n",nom);
+}
+

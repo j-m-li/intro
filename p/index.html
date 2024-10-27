@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction &agrave; la programmation</title>
+<meta name="description" content="1998 - 1999 &copy; Jean-Marc Lienher">
+<meta content="Jean-Marc Lienher" name="author">
+<link href="../style.css" rel="stylesheet">
+<link rel="icon" href="../favicon.ico">
+
+<style>
+* {
+/*   outline: 1px solid #f00 !important;
+  */ 
+}
+h1, h2, h3 {text-align: center; }
+a { text-decoration: none;}
+
+h1, h2, body {
+	font-family: 
+		"Quicksand",
+		system-ui,
+  		-apple-system,
+  		"Segoe UI",
+  		Roboto,
+  		"Helvetica Neue", Arial,
+  		"Noto Sans",
+  		"Liberation Sans",
+  		sans-serif;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+hr {
+	width: 30%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+</style>
+</head>
+<body class="mx-0 mx-sm-auto">
+<header class="mt-2">
+<div class="text-center">
+<pre>
+<a 
+href="fr.html"><img alt="fr" src="../img/fr.gif"></a
+>    <a
+href="pan.html"><img alt="pandunia" src="../img/pan.gif"></a
+>    <a
+href="en.html"><img alt="en" src="../img/en.gif"></a
+>    <a
+href="de.html"><img alt="de" src="../img/de.gif"></a
+>    <a
+href="it.html"><img alt="it" src="../img/it.gif"></a>
+</pre>
+</div>
+<div class="text-center">
+<a href="../fr.html">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-house-check-fill" viewBox="0 0 16 16">
+  <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+  <path d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+  <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.707l.547.547 1.17-1.951a.5.5 0 1 1 .858.514Z"/>
+</svg>
+</a>
+</div>
+</header>
+
+<div class="mx-0 mx-sm-5" >
+<div class="row mx-auto">
+<div class="container"><p>
+</p></div><div class="col-12">
+<h1>Introduction &agrave; la programmation</h1>
+</div><div class="mx-auto mb-4 col-12 col-sm-6 col-lg-4  text-start">
+<p>
+</p></div><div class="col-12">
+<h2>1998 - 1999 &copy; Jean-Marc Lienher</h2>
+</div><div class="mx-auto mb-4 col-12 col-sm-6 col-lg-4  text-start">
+<p>
+</p></div>
+<div class="mx-auto col-12 col-lg-9"><hr>
+<p>
+<UL><B><FONT SIZE=+1><A HREF="#Scripts Shell">Scripts Shell</A></FONT></B>
+<UL>
+<LI>
+<B><FONT SIZE=+1><A HREF="#sh">sh</A></FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1><A HREF="#csh/tcsh">csh/tcsh</A></FONT></B></LI>
+
+<LI>
+<B><FONT SIZE=+1><A HREF="#ksh">ksh</A></FONT></B></LI>
+</UL>
+<B><FONT SIZE=+1><A HREF="#Scripts awk">Scripts awk</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Scripts Perl">Scripts Perl</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Scripts Tcl">Scripts Tcl</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Scripts Tcl/Tk">Scripts Tcl/Tk</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#C">C</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#C++">C++</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Fortran">Fortran</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Pascal">Pascal</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Java">Java</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#JavaScript">JavaScript</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#HTML">HTML</A></FONT></B></UL>
+
+<H2>
+<A HREF="#Programmation Dos">Programmation Dos</A></H2>
+
+<UL><B><FONT SIZE=+1><A HREF="#Scripts Batch (.BAT)">Scripts Batch (.BAT)</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#QBasic">QBasic</A></FONT></B>
+<BR><B><FONT SIZE=+1><A HREF="#Assembleur">Assembleur</A></FONT></B></UL>
+
+<DL>
+<CENTER>
+<H2>
+
+<HR WIDTH="100%"></H2></CENTER>
+
+<CENTER>
+<H2>
+<A NAME="Introduction"></A><U>Introduction</U></H2></CENTER>
+Ce document n'a pas pour but de vous donner tous les secrets de la programmation
+informatique.
+<P>Il s'agit d'un tour rapide des langages de programmations les plus courants
+et d'un apprentissage par l'exemple <U>sans th&eacute;orie</U>.
+<P>Pour chaque langage, un court exemple est donn&eacute;.
+<BR>Je vous propose de l'essayer et de tenter d'en comprendre le fonctionnement.
+<BR>Ensuite, modifiez le pour mieux visualiser le comportement de toutes
+les fonctions.
+<BR>Et enfin, cr&eacute;ez un programme qui vous est propre en utilisant
+les fonctions pr&eacute;sent&eacute;es dans l'exemple.
+<BR>Si ces fonctions ne suffisent pas &agrave; cr&eacute;er votre programme,
+consultez la documentation ou procurez vous un ouvrage qui traite le langage
+que vous avez choisi.
+<P>Le langage qui comporte le plus d'exemples dans ce document est Perl,
+car c'est le plus utilis&eacute; pour la cr&eacute;ation de scripts CGI
+sur les serveurs WEB.
+<P>Apr&egrave;s avoir lu ce document vous d&eacute;cidez de vous lancer
+r&eacute;ellement dans la programmation, procurez vous un ou des ouvrages
+traitant du sujet de votre programme. En effet , il n'est pas rare de perdre
+des heures &agrave; essayer de trouver comment ex&eacute;cuter une t&acirc;che,
+alors qu'en quelques minutes il aurait &eacute;t&eacute; possible de trouver
+la solution dans un ouvrage de r&eacute;f&eacute;rence.
+<P>Dans tous les cas, si vous d&eacute;butez en programmation, restez raisonnable,
+ne vous attaquez pas &agrave; des projets trop cons&eacute;quent, vous
+seriez vite d&eacute;go&ucirc;t&eacute;.
+<BR>&nbsp;
+<DT>
+
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<CENTER>
+<H2>
+<A NAME="Generalite"></A><B><U>G&eacute;n&eacute;ralit&eacute;s</U></B></H2></CENTER>
+
+<DT>
+<B>Avant de commencer, un mot sur CGI.</B></DT>
+
+<DT>
+CGI n'est pas un langage de programmation, c'est juste une norme.</DT>
+
+<DT>
+Cette norme nous dit simplement qu'un programme CGI doit afficher par la
+sortie standard le texte</DT>
+
+<DT>
+"<TT>Content-type: text/html"</TT> suivit de 2 retours &agrave; la ligne
+avant d'afficher le code source HTML.</DT>
+
+<DT>
+Un programme CGI peut &ecirc;tre &eacute;crit dans n'importe quel langage
+qui est capable d'afficher du texte et de lire les variables d'environnement.</DT>
+
+<BR><B>Remarque :</B> le serveur http de la machine o&ugrave; doit &ecirc;tre
+ex&eacute;cut&eacute; le CGI doit &ecirc;tre configur&eacute; pour accepter
+les programmes avec l'extension .cgi.
+<P><B>Allons-y :</B>
+<BR>Il existe deux cat&eacute;gories principales de programmes, les scripts
+et les programmes compil&eacute;s.
+<P>Les scripts sont des programmes dont le code source et le fichier ex&eacute;cutable
+ne font qu'un. Pour qu'ils s'ex&eacute;cutent il faut que l'interpr&eacute;teur
+correspondant au langage dans lequel ils ont &eacute;t&eacute; &eacute;crit
+soit install&eacute; sur la machine. Si vous voulez &ecirc;tre certain
+qu'un scripts s'ex&eacute;cute sur toutes les machine UNIX, il vous faudra
+utiliser le Bourne Shell ("#!/bin/sh"), c'est le seul interpr&eacute;teur
+qui se trouve sur tous les syst&egrave;mes UNIX.
+<P>Les programmes compil&eacute;s ne fonctionnent que sur le syst&egrave;me
+d'exploitation pour lequel ils ont &eacute;t&eacute;s compil&eacute;.
+<BR>Un programme compil&eacute; pour LINUX ne fonctionnera pas sur FreeBSD
+. Il faudra le recompiler sur FreeBSD pour l'utiliser, si il est bien &eacute;crit
+il n'y aura pas besoin de modifier le code source. Les programmes compil&eacute;s
+sont plus rapides &agrave; l'ex&eacute;cution que les scripts car apr&egrave;s
+la compilation ils ne contiennent plus que des instructions en langage
+machine directement ex&eacute;cutable par le processeur.
+<P>Tous les codes sources des programmes d'exemples sont sauv&eacute;s
+sur ce serveur avec l'extension .txt. Pour qu'ils soient utilisables, il
+faudra les renommer avec l'extension correcte apr&egrave;s les avoir sauv&eacute;
+sur votre disque dur.
+<P><B><U>Structure g&eacute;n&eacute;rale d'un programme :</U></B>
+<UL>
+<LI>
+inclusion de fichiers source externes</LI>
+
+<LI>
+d&eacute;finition de macro et constantes</LI>
+
+<LI>
+d&eacute;finition des variables globales</LI>
+
+<LI>
+d&eacute;finition des sous-fonctions</LI>
+
+<UL>
+<LI>
+boucle</LI>
+
+<LI>
+acquisition des donn&eacute;es</LI>
+
+<LI>
+affichage des donn&eacute;es</LI>
+
+<LI>
+tests sur les donn&eacute;es</LI>
+
+<LI>
+modification des donn&eacute;es</LI>
+
+<LI>
+...</LI>
+</UL>
+
+<LI>
+d&eacute;finition de la fonction principale (qui sera appel&eacute;e en
+premier)</LI>
+
+<UL>
+<LI>
+appel des sous-fonctions</LI>
+
+<LI>
+boucle principale</LI>
+</UL>
+</UL>
+
+<P><BR><B><U>Style :</U></B>
+<P>Style de codage d'apr&egrave;s Kernighan and Ritchie (K&amp;R),&nbsp;
+les proph&egrave;tes du langage C.
+<BR>R&eacute;sum&eacute; par Linus Torvalds pour Linux (et traduit par
+moi-m&ecirc;me;-).
+<P>Le code &agrave; l'int&eacute;rieur d'une fonction est tabul&eacute;
+&agrave; 8 caract&egrave;res.
+<BR>Le nombre maximum de tabulation est de 3, si il doit &ecirc;tre d&eacute;pass&eacute;
+<BR>c'est qui faut d&eacute;finir une sous-fonction.
+<P>Les parenth&egrave;ses '{' sont plac&eacute;es sur la m&ecirc;me ligne
+que les instructions
+<BR>et sous les d&eacute;finitions de fonctions. Les parenth&egrave;ses
+'}' sont plac&eacute;es
+<BR>seules sur une ligne. Exemple :
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (x is true) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+we do y</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int function(int x)</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+body of function</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+body of do-loop</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } while (condition);</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (x == y) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+..</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else if (x > y) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+...</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+....</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P>Les noms de variables et de fonctions 'GLOBAL' doivent &ecirc;tre significatif.
+<BR>Exemple pour une fonction qui compte le nombre d'utilisateurs actifs:
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <TT>count_active_users()</TT>
+<BR>et pas :
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <TT>cntusr()</TT>
+<P>Les noms de variables 'LOCAL' doivent &ecirc;tre courts. Exemple :
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <TT>i</TT>
+<BR>et pas :
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <TT>loop_counter</TT>
+<P>Les fonctions doivent &ecirc;tre courtes, elles ne doivent pas d&eacute;passer
+<BR>48 lignes et 80 caract&egrave;res par lignes. Elles peuvent &ecirc;tre
+plus
+<BR>longues si elles sont simples. Si elles sont compliqu&eacute;es d&eacute;finissez
+<BR>des sous-fonctions 'inline'.
+<P>Les variables locales ne doivent pas &ecirc;tre plus nombreuses que
+10.
+<P>Ajoutez des commentaires pour expliquer ce que fait votre code et pas
+<BR>comment il le fait. &Eacute;vitez de mettre des commentaires dans le
+corps des
+<BR>fonctions. Si vous le faites soyez bref. Placez les commentaire au
+dessus
+<BR>de la fonction.
+<BR>&nbsp;
+<BR>&nbsp;
+<P>
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<BR>&nbsp;
+<BR>&nbsp;
+<BR>
+<CENTER>
+<H2>
+<A NAME="Programmation Unix"></A><B><U>Programmation Unix</U></B></H2></CENTER>
+Pour qu'un programme puisse &ecirc;tre ex&eacute;cut&eacute; sous UNIX,
+il faut toujours le rendre ex&eacute;cutable &agrave; l'aide de la commande
+suivante :
+<UL><TT>chmod a+x mon_programme</TT></UL>
+
+<DL>
+<DT>
+N'oubliez jamais de consulter les pages de manuel, en g&eacute;n&eacute;ral
+elles sont extr&ecirc;mement bien faites.</DT>
+
+<DT>
+&nbsp;</DT>
+
+<DT>
+
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="Scripts Shell"></A><B><U>Scripts Shell</U></B></H2>
+Tous les scripts shell commencent par une ligne qui indique le chemin absolu
+du shell pour lequel ils ont &eacute;t&eacute; &eacute;crits (exemple pour
+sh : "<TT>#!/bin/sh").</TT>
+<BR>
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<BR>&nbsp;
+<UL>
+<H2>
+<A NAME="sh"></A><B><U>sh</U></B></H2>
+</UL>
+Sh est un shell simple qui est standard et obligatoirement pr&eacute;sent
+sur tous les syst&egrave;mes Unix.
+<BR>Sous Linux il n'est pas r&eacute;ellement pr&eacute;sent, il est directement
+link&eacute; &agrave; bash qui est un sh am&eacute;lior&eacute;.
+<BR>&nbsp;
+<UL><A HREF="sh1.txt">Exemple 1</A> :
+<UL><TT>#!/bin/sh</TT></UL>
+</UL>
+
+<UL>
+<UL><TT>echo -n "Quel est ton nom ? "</TT>
+<BR><TT>read nom</TT>
+<BR><TT>echo "Hello $nom, sh te salue"</TT></UL>
+</UL>
+
+<UL><A HREF="sh2.txt">Exemple 2</A>:
+<UL><TT>#!/bin/sh</TT>
+<P>txt="<TT>&lt;H1>Affichage des variables d'environnement pour script
+cgi&lt;/H1>"</TT>
+<BR><TT>echo -ne "Content-type: text/html\n\n"</TT>
+<BR><TT>echo $txt</TT>
+<BR><TT>echo&nbsp; "&lt;PRE>"</TT>
+<BR><TT>printenv</TT>
+<BR><TT>echo "&lt;/PRE>"</TT></UL>
+</UL>
+Documentation :&nbsp; pages du manuel , UNIX ...
+<P>
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<UL>
+<H2>
+<A NAME="csh/tcsh"></A><B><U>csh/tcsh</U></B></H2>
+Un shell qui reprend la syntaxe du langage C ???
+<BR>Vous trouvez? C'est en tout cas ce qui est &eacute;crit sur tous les
+ouvrages parlant de UNIX.
+<P><A HREF="csh.txt">Exemple :</A>
+<UL><TT>#!/bin/csh</TT>
+<P><TT>set txt="Content-type: text/html"</TT>
+<BR><TT>echo $txt</TT>
+<BR><TT>echo</TT>
+<BR><TT>echo "&lt;H2>Il est "`date '+ %H heure %M minute'`".&lt;/H2>"</TT>
+<BR>&nbsp;
+<BR>&nbsp;</UL>
+</UL>
+
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<UL>
+<H2>
+<A NAME="ksh"></A><B><U>ksh</U></B></H2>
+Un shell puissant pour la programmation.
+<P><A HREF="ksh.txt">Exemple</A> :
+<UL><TT>#!/bin/ksh</TT>
+<P><TT>html_head () {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo -ne "Content-type:
+text/html\n\n"</TT>
+<BR><TT>}</TT>
+<P><TT>html_head</TT>
+<P><TT>i=0</TT>
+<BR><TT>while (test $i -lt&nbsp; 1) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i=`expr $i + 1`</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "Ceci est le mot
+magique pour cr&eacute;er un script CGI :"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;PRE>"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; html_head</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; echo "&lt;/PRE>"</TT>
+<BR><TT>}</TT>
+<BR><TT>echo "H&eacute; oui, c'est tout ..."</TT></UL>
+</UL>
+
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="Scripts awk"></A><U>Scripts awk</U></H2>
+Un langage pour le traitement de fichier texte. L'anc&ecirc;tre de&nbsp;
+Perl.
+<P><A HREF="awk1.txt">Exemple 1</A>:
+<UL><TT>#!/bin/awk -f</TT>
+<BR><TT>BEGIN {printf "Quel est ton nom? "}</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "hello " $1 ",
+awk te salue"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit</TT>
+<BR><TT>}</TT>
+<BR><TT>END {print "bye bye"}</TT></UL>
+
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<BR><A HREF="awk2.txt">Exemple 2</A>:
+<UL><TT>#!/bin/awk -f</TT>
+<P><TT>BEGIN {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf "Quel est ton
+login ? "</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FS=":"</TT>
+<BR><TT>}</TT>
+<P><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; login = $0</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; # print FNR</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print login, "\b, je
+recherche to acompte."</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; system( "cat /etc/passwd
+</p><blockquote>/usr/tmp/recherche.tmp" )</TT>
+</blockquote><p><BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; status = getline $0
+&lt; "/usr/tmp/recherche.tmp"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i = 1</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ( status > 0 )
+{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print "+", i,"&nbsp; acompte :",$1</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if ( $1 == login ) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+rep = $6</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (( $1 ~ login ) &amp;&amp; ( $1 != login )) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print $1, "a un login tr&egrave;s proche du tien"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+status = getline $0 &lt; "/usr/tmp/recherche.tmp"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+i++</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; system( "rm /usr/tmp/recherche.tmp"
+)</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit</TT>
+<BR><TT>}</TT>
+<P><TT>END {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (rep != "") {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print login, "\b, ton r&eacute;pertoire est", rep</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 0</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; } else {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+print "je n'ai pas trouve ton acompte"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+exit 1</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>}</TT>
+<BR>&nbsp;</UL>
+
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="Scripts Perl"></A><B><U>Scripts Perl</U></B></H2>
+Le TOP des langages scripts pour le traitement du texte et le reste...
+<P><A HREF="perl1.txt">Exemple 1</A>:
+<UL><TT>#!/usr/bin/perl5</TT>
+<P><TT>print "Quel est ton nom ? ";</TT>
+<BR><TT>$nom = &lt;STDIN>;</TT>
+<BR><TT>chomp($nom);</TT>
+<BR><TT>print "Hello $nom, Perl te salue\n";</TT></UL>
+
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<BR><A HREF="perl2.txt">Exemple 2</A>:
+<UL><TT>#!/usr/bin/perl5</TT>
+<BR><TT><FONT COLOR="#000099"># Script CGI universel</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Support la m&eacute;thode de communication
+POST ou GET</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Prend en charge la conversion de caract&egrave;res
+sp&eacute;ciaux</FONT></TT>
+<P><TT>sub getHtmlData() {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local(%in,$buffer,$i,
+$index, $key, $val, @in );</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($ENV{'REQUEST_METHOD'}
+eq "POST") {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+read (STDIN, $buffer, $ENV{'CONTENT_LENGTH'});</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ($ENV{'REQUEST_METHOD'}
+eq "GET") {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$buffer = $ENV{'QUERY_STRING'};</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @in = split(/&amp;/,$buffer);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $i=0;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ($i &lt;= $#in)&nbsp;
+{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$in[$i] =~ s/+/ /g;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$in[$i] =~ s/%(..)/pack("c",hex($1))/ge;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$index = index($in[$i],"=");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$key = substr($in[$i],0,$index);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$val = substr($in[$i],$index+1);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (defined($in{$key})) { $in{$key} .= "\0" };</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$in{$key} .= $val;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+$i++;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return %in;</TT>
+<BR><TT>}</TT>
+<BR><TT>my %data = getHtmlData();</TT>
+<BR><TT>print "Content-type: text/html\n\n&lt;HTML>\n";</TT>
+<BR><TT>print "&lt;PRE>\n";</TT>
+<BR><TT>my $vari;</TT>
+<BR><TT>foreach $vari (keys(%data)) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "la variable $vari
+contient&nbsp; $data{$vari}\n";</TT>
+<BR><TT>}</TT>
+<BR><TT>print "&lt;/PRE>\n";</TT>
+<BR><TT>print "&lt;/HTML>\n";</TT>
+<BR><TT>exit;</TT></UL>
+
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<BR><A HREF="perl3.txt">Exemple 3</A>:
+<BLOCKQUOTE><TT>#!/usr/bin/perl5</TT>
+<P><TT>print "Content-type: text/plain\n\n";</TT>
+<BR><TT>&nbsp;<FONT COLOR="#000099"># - Affiche du texte sur la sortie
+standard</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# \n repr&eacute;sente un retour a
+la ligne</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# \t repr&eacute;sente une tabulation</FONT></TT>
+<P><TT>open(FILE1, ">/usr/tmp/tst_$$.txt");</TT>
+<BR><TT>print FILE1 "Hello\n ... \n";</TT>
+<BR><TT>close(FILE1);</TT>
+<BR><TT>&nbsp;<FONT COLOR="#000099"># - Ouvre un fichier (avec un nome
+unique) pour y &eacute;crire</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; (avec >> a la place de
+</p><blockquote>si le fichier existe les</FONT></TT> <TT><FONT COLOR="#000099">donnes</FONT></TT>
+</blockquote><p><BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; sont mises a la suite
+des anciennes)</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - &Eacute;crit dans le fichier</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ferme le fichier</FONT></TT>
+<P><TT>open(FILE2, "&lt;/usr/tmp/tst_$$.txt");</TT>
+<BR><TT>$i=0;</TT>
+<BR><TT>while(&lt;FILE2>) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "ligne $i $_\n";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $i++;</TT>
+<BR><TT>}</TT>
+<BR><TT>close(FILE2);</TT>
+<BR><TT>qx{rm /usr/tmp/tst_$$.txt};</TT>
+<BR><TT>&nbsp;<FONT COLOR="#000099"># - Ouvre un fichier pour y lire des
+donnes</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $i a 0</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Lit ligne par ligne le fichier
+tant que la fin n'est pas atteinte</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche le num&eacute;ro de la
+ligne suivit du contenu de cette ligne</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ajoute 1 a la variable $i</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de la boucle de lecture</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ferme le fichier</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Efface le fichier</FONT></TT>
+<P><TT>$date=qx{date '+%d.%m.%Y'};</TT>
+<BR><TT>chomp($date);</TT>
+<BR><TT>print "Nous sommes le $date ...\n";</TT>
+<BR><TT>&nbsp;<FONT COLOR="#000099"># - Initialise la variable $date avec
+le texte qui est retourne par</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; la commande date ex&eacute;cut&eacute;e
+dans un shell</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Supprime le retour a la ligne a
+la fin du la variable date</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche le r&eacute;sultat</FONT></TT>
+<P><TT>@table = ("zero", "un", "deux", "trois");</TT>
+<BR><TT>@table = (@table, "quatre");</TT>
+<BR><TT>for ($i=0; $i &lt;= $#table; $i++) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "$i --- $table[$i]\n";</TT>
+<BR><TT>}</TT>
+<BR><TT>&nbsp;<FONT COLOR="#000099"># - Initialise&nbsp; un tableau contenant
+4 cases (ou variables)</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ajoute une cinqui&egrave;me case
+au tableau</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Boucle pour chaque valeur de $i
+tant que $i est plus petit ou</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; &eacute;gale au nombre
+de cases contenues dans le tableau.</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la valeur de $i et le contenu
+de la case du tableau</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; correspondant</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de la boucle</FONT></TT>
+<P><TT>%hash = ("key", "val", "nom", "jml");</TT>
+<BR><TT>foreach $clef (keys(%hash)) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "$clef contient
+$hash{$clef}\n";</TT>
+<BR><TT>}</TT>
+<BR><TT>$hash{'perl'} = "top";</TT>
+<BR><TT>delete $hash{'nom'};</TT>
+<BR><TT>foreach $val (values(%hash)) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "$val est dans
+hash\n";</TT>
+<BR><TT>}</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise un hachage contenant
+2 clefs initialis&eacute;es.</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Boucle pour chaque clefs contenue
+dans le hachage</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche le nom de la clef et sa
+valeur</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de la boucle</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ajoute un clef au hachage;</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Supprime un clef</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Boucle pour chaque valeur contenue
+dans le hachage</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche cette valeur.</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de la boucle</FONT></TT>
+<P><TT>$i=3;</TT>
+<BR><TT>if ($i&lt;2) {</TT>
+<BR><TT>&nbsp;print "i est plus petit que 2\n";</TT>
+<BR><TT>} elsif ($i==3) {</TT>
+<BR><TT>&nbsp;print "i egal 3\n";</TT>
+<BR><TT>} else {</TT>
+<BR><TT>&nbsp;print "i n'est pas &eacute;gal a 3 et n'est pas plus petit
+que 2\n";</TT>
+<BR><TT>}</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $i a 3</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Si $i est plus petit que 2 :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche "i est plus
+petit que 2"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Sinon si $i est &eacute;gal a 3
+:</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche "i &eacute;gal
+3"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Sinon :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche "i n'est pas
+..."</FONT></TT>
+<P><TT>$txt="yes or no";</TT>
+<BR><TT>if ($txt eq "yes or no") {</TT>
+<BR><TT>&nbsp;print "txt &eacute;gal yes or no\n";</TT>
+<BR><TT>}</TT>
+<BR><TT>if ($txt =~ m/OR NO/ig ) {</TT>
+<BR><TT>&nbsp;print "txt contient OR NO en majuscule ou en minuscule \n";</TT>
+<BR><TT>}</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Si $txt &eacute;gal "yes or no"
+:</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche "txt .."</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Si $txt contient "OR NO" en majuscule
+ou en minuscule :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche ...</FONT></TT>
+<P><TT>$txt="hello world\n";</TT>
+<BR><TT>print $txt;</TT>
+<BR><TT>$txt =~ tr/a-z/A-Z/;</TT>
+<BR><TT>print $txt;</TT>
+<BR><TT>$txt=~ s/WORLD/earth/g;</TT>
+<BR><TT>print $txt;</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Transforme toutes le minuscules
+contenues dans $txt en majuscules</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Remplace tous les mots WORLD contenus
+dans $txt par earth</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la variable $txt</FONT></TT>
+<P><TT>$vrai=1;</TT>
+<BR><TT>$faux=0;</TT>
+<BR><TT>if ($vrai) { print "ok 1\n" };</TT>
+<BR><TT>if (!$faux) { print "ok 2\n" };</TT>
+<BR><TT>if ($vrai || $faux) { print "ok 3\n" };</TT>
+<BR><TT>if ($vrai &amp;&amp; $faux) { print "ok 4\n" };</TT>
+<BR><TT><FONT COLOR="#000099"># - Initialise les variables $vrai et $faux</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Si $vrai est diff&eacute;rent de 0 :
+Affiche "ok 1"</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Si $faux &eacute;gal 0 : Affiche "ok
+2"</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Si $vrai est diff&eacute;rent de 0 ou
+si $faux est diff&eacute;rent de 0 : Affiche "ok 3"</FONT></TT>
+<BR><TT><FONT COLOR="#000099"># - Si $vrai est diff&eacute;rent de 0 et
+si $faux est diff&eacute;rent de 0 : Affiche "ok 4"</FONT></TT>
+<P><TT>sub ma_fonction</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print "$_[0] plus $_[1] &eacute;gal
+";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ($_[0] + $_[1]);</TT>
+<BR><TT>}</TT>
+<BR><TT>print ma_fonction(2,3) . "\n";</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - D&eacute;clare une sous fonction
+de nom "ma_fonction"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche "1er argument
+de la sous fonction" "plus" " 2&egrave;me argument" "&eacute;gal"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Retourne la somme de
+2 arguments</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de la sous fonction</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Appel la sous fonction avec les
+arguments 2 et 3 et Affiche le r&eacute;sultat</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; retourne par la sous
+fonction</FONT></TT>
+<P><TT>$txt="nom\tLienher\tprenom\tJean-Marc\tentreprise\tNickasil Production.\n";</TT>
+<BR><TT>@donnes=split('\t',$txt);</TT>
+<BR><TT>$i=0;</TT>
+<BR><TT>foreach $data (@donnes) {</TT>
+<BR><TT>&nbsp;if ($i) {</TT>
+<BR><TT>&nbsp; print "$data\n";</TT>
+<BR><TT>&nbsp; $i=0;</TT>
+<BR><TT>&nbsp;} else {</TT>
+<BR><TT>&nbsp; print "$data == ";</TT>
+<BR><TT>&nbsp; $i=1;</TT>
+<BR><TT>&nbsp;}</TT>
+<BR><TT>}</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise le tableau @donnes en
+cr&eacute;ant une case par phrase s&eacute;par&eacute;e par une</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; tabulation dans la variable
+$txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise $i</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Boucle pour chaque case contenue
+dans @donne :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Si est diff&eacute;rent
+de 0 :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; - Affiche
+le contenu de la case</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; - Met $i
+a 0</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Sinon :</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; - Affiche
+le contenu de la case et " == "</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp; -Met $i a
+1</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Fin de Si</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp; - Fin de boucle</FONT></TT>
+<P><TT><FONT COLOR="#000000">$txt="0123456789012345";</FONT></TT>
+<BR><TT><FONT COLOR="#000000">$ind1 = index($txt,'23',0);</FONT></TT>
+<BR><TT><FONT COLOR="#000000">$ind2 = index($txt,'23',$ind1+1);</FONT></TT>
+<BR><TT><FONT COLOR="#000000">print "$txt\n";</FONT></TT>
+<BR><TT><FONT COLOR="#000000">print substr($txt,$ind1,10) . "&nbsp; index1=$ind1\n";</FONT></TT>
+<BR><TT><FONT COLOR="#000000">print substr($txt,$ind2), "&nbsp; index2=$ind2\n";</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise la variable $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise $ind1 avec le nombre
+de caract&egrave;res trouves dans</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; $txt avant de trouver
+la cha&icirc;ne de caract&egrave;re '12'</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise $ind2 comme $ind1 mais
+en cherchant apr&egrave;s $ind1</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche $txt</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche les 10 caract&egrave;res
+de $txt qui suivent l'emplacement de $ind1</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la fin de $txt depuis l'emplacement
+de $ind2</FONT></TT>
+<P><TT>print pack("c",0x41) . "\n";</TT>
+<BR><TT>print unpack("H","A") . unpack("h","A") . "\n";</TT>
+<BR><TT>print hex("0x41");</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche le caract&egrave;re ASCII
+correspondant 0x41 en hexad&eacute;cimal (base 16)</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la partie haute et la partie
+basse de la hexad&eacute;cimale</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; correspondant a la lettre
+A</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la valeur en d&eacute;cimal
+de 0x41 en hexad&eacute;cimal</FONT></TT>
+<P><TT>@list = ("ABAAAA", "AAAAAA", "BBBBBB", "CCCCCC");</TT>
+<BR><TT>while (&lt;@list>) { print "$_\n" };</TT>
+<BR><TT>print "tri\n";</TT>
+<BR><TT>@list = sort {uc($a) cmp uc($b)} @list;</TT>
+<BR><TT>while (&lt;@list>) { print "$_\n" };</TT>
+<BR><TT>@list = (3, 2, 5, 8, 1 ,7, 2);</TT>
+<BR><TT>while (&lt;@list>) { print "$_\n" };</TT>
+<BR><TT>print "tri\n";</TT>
+<BR><TT>@list = sort {$a &lt;=> $b} @list;</TT>
+<BR><TT>while (&lt;@list>) { print "$_\n" };</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise le tableau @list</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche toutes les cases de @list
+avec un retour a la ligne</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche "tri"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Trie @list par ordre alphab&eacute;tique
+sans tenir compte de majuscules et des minuscules</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche la liste tri&eacute;e</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise @list avec des nombres</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Imprime @list ligne par ligne</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche "tri"</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Trie @list dans l'ordre croissant</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Imprime @list</FONT></TT>
+<P><TT>print "8 / 3 = " . (8 / 3) . "\n";</TT>
+<BR><TT>print "int(8 / 3) = " . int(8 / 3) . "\n";</TT>
+<BR><TT>print "8 % 3 = " . (8 % 3) . "\n";</TT>
+<BR><TT>print "8 - 3 = " . (8 - 3) . "\n";</TT>
+<BR><TT>print "8 + 3 = " . (8 + 3) . "\n";</TT>
+<BR><TT>print "sqrt(8) = " . sqrt(8) . "\n";</TT>
+<BR><TT>print "8 <strong> 2 = " . (8 </strong> 2) . "\n";</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une division a virgule</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une division enti&egrave;re</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche le reste d'une division
+enti&egrave;re</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une soustraction</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une addition</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une racine carr&eacute;e</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affiche une puissance</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - (Tous les chiffre peuvent &ecirc;tre
+remplace par des variables</FONT></TT>
+<P><TT>print sprintf ("un nombre %.5f\n",2.89);</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Affichage formate d'un nombre</FONT></TT>
+<P><TT>use IO::Socket;</TT>
+<BR><TT>$host="localhost";</TT>
+<BR><TT>$port="80";</TT>
+<BR><TT>$page="/";</TT>
+<BR><TT>$remote = IO::Socket::INET->new(Proto => "tcp",</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PeerAddr => $host,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+PeerPort => $port, );</TT>
+<P><TT>$remote->autoflush(1);</TT>
+<BR><TT>print $remote "GET $page\n";</TT>
+<BR><TT>while (&lt;$remote>) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print $_;</TT>
+<BR><TT>}</TT>
+<BR><TT>close($remote);</TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Inclus le module IO:Socket pour
+l'utilisation du r&eacute;seau</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Initialise les 3 variables</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Cr&eacute;e un objet $remote repr&eacute;sentant
+une connexion r&eacute;seau avec</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; le serveur $host sur
+le port 80 (http)</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Met la connexion en mode de vidage
+du buffer automatique</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Demande au serveur de renvoyer
+la page $page</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Boucle tant que le serveur envoie
+des donn&eacute;es</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp; - Affiche ces donn&eacute;es</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Fin de boucle</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - Ferme la connexion r&eacute;seau</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;# - ATTENTION : pour utiliser IO::Socket,
+il faut au minimum la</FONT></TT>
+<BR><TT><FONT COLOR="#000099">&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+version 5.004 de perl</FONT></TT></BLOCKQUOTE>
+<A HREF="perl_ip.txt">Un autre exemple</A>
+<P>Documentation :
+<UL>
+<LI>
+pages man&nbsp; :</LI>
+
+<UL>
+<LI>
+perl</LI>
+
+<LI>
+perldata</LI>
+
+<LI>
+perlfunc</LI>
+
+<LI>
+perlipc</LI>
+
+<LI>
+perlmod</LI>
+
+<LI>
+perlvar</LI>
+
+<LI>
+...</LI>
+</UL>
+</UL>
+
+<P><BR>
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="Scripts Tcl"></A><B><U>Scripts Tcl</U></B></H2>
+Langage de base pour Tk.
+<BR><A HREF="tcl.txt">Exemple 1:</A>
+<UL><TT>#!/usr/bin/tclsh</TT>
+<P><TT>puts&nbsp; -nonewline "Quel est ton nom? "</TT>
+<BR>flush stdout
+<BR><TT>set nom [gets stdin]</TT>
+<BR><TT>puts "Hello $nom, Tcl te salue"</TT></UL>
+<A HREF="tcl2.txt">Exemple 2</A> :
+<BLOCKQUOTE><TT>#!/usr/bin/tclsh</TT>
+<BR><TT>set variable 0</TT>
+<P><TT>for {set i 0} {$i &lt; 5} {incr i} {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "i = $i"</TT>
+<BR><TT>}</TT>
+<P><TT>set i 0</TT>
+<BR><TT>while {$i &lt; 5} {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "sortie pr&eacute;matur&eacute;e"</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; incr i</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if {$i == 2} { break }</TT>
+<BR><TT>}</TT>
+<P><TT>set i 0</TT>
+<BR><TT>if {$i == 0} then {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "z&eacute;ro"</TT>
+<BR><TT>} elseif {$i &lt; 0} then {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "n&eacute;gatif"</TT>
+<BR><TT>} else {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "positif"</TT>
+<BR><TT>}</TT>
+<P><TT>proc ajoute_2_a num {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return [expr $num + 2]</TT>
+<BR><TT>}</TT>
+<BR><TT>set i 1</TT>
+<BR><TT>puts "[ajoute_2_a $i]"</TT>
+<P><TT>puts "$env(PATH)"</TT>
+<P><TT>set tableau(0) "oui"</TT>
+<BR><TT>set tableau(1) "non"</TT>
+<BR><TT>set tableau(2) "bof"</TT>
+<BR><TT>for {set i 0} {$i != 3} {incr i} {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "$tableau($i)"</TT>
+<BR><TT>}</TT>
+<P><TT>puts -nonewline stdout "tapez quelque chose > ? "</TT>
+<BR><TT>flush stdout</TT>
+<BR><TT>set entree [gets stdin]</TT>
+<BR><TT>set file_handler [open "test.tmp" {RDWR CREAT APPEND}]</TT>
+<BR><TT>puts $file_handler $entree</TT>
+<BR><TT>seek $file_handler 0 start</TT>
+<BR><TT>while {[gets $file_handler line] != -1} {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; puts "$line"</TT>
+<BR><TT>}</TT>
+<BR><TT>close $file_handler</TT></BLOCKQUOTE>
+
+<P><BR>
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="Scripts Tcl/Tk"></A><B><U>Scripts Tcl/Tk</U></B></H2>
+Le standard pour cr&eacute;er des applications graphiques sous X-Window
+avec un langage script.
+<BR>La cr&eacute;ation d'une interface graphique est un jeu d'enfant avec
+Tcl/Tk.
+<P>&nbsp;<A HREF="tk.txt">Exemple 1:</A>
+<UL><TT>#!/usr/bin/wish</TT>
+<P><TT>label .quest -texte "Quel est ton nom ? "</TT>
+<BR><TT>entry .nom</TT>
+<BR><TT>label .rep -texte ""</TT>
+<BR><TT>button .quit -texte "Quitter" -command { exit}</TT>
+<BR><TT>button .ok -texte "OK" -command {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; set nom [.nom get ]</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; .rep config -texte "Hello $nom, Tcl/Tk te salue"</TT>
+<BR><TT>}</TT>
+<BR><TT>pack .quest .nom .rep .ok .quit</TT></UL>
+
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="C"></A><B><U>C</U></B></H2>
+LE LANGAGE. Presque tous les programmes sont&nbsp; &eacute;crits en C sous
+UNIX.
+<P>Pour debugger votre programme C ou C++ utilisez "<TT>gdb</TT>" :
+<BLOCKQUOTE><TT><FONT COLOR="#663366">gdb mon_prog</FONT></TT>
+<BR><TT>(gdb) <FONT COLOR="#663366">run</FONT></TT>
+<BR><TT>Starting program: /usr/src/mon_prog</TT>
+<BR><TT>Program received signal SIGSEGV, Segmentation fault.</TT>
+<BR><TT>(gdb) <FONT COLOR="#663366">where</FONT></TT>
+<BR><TT>#0&nbsp; 0x4029a373 in gtk_entry_set_text (entry=0x82f5c68,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; text=0x4 &lt;Address 0x4 out of bounds>) at
+gtkentry.c:395</TT>
+<BR><TT>(gdb) <FONT COLOR="#663366">list gtkentry.c:394</FONT></TT>
+<P><TT>394&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tmp_pos = 0;</TT>
+<BR><TT>395&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gtk_editable_insert_text
+(editable, text, strlen (text), &amp;tmp_pos);</TT>
+<BR><TT>396&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; editable->current_pos =
+tmp_pos;</TT>
+<BR><TT>(gdb) <FONT COLOR="#663366">quit</FONT></TT></BLOCKQUOTE>
+
+<P><BR><A HREF="c.txt">Exemple 1</A>:
+<UL><TT>#include &lt;stdio.h></TT>
+<P><TT>char nom[255];</TT>
+<P><TT>void main(int argc, char *argv[])</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Quel est ton
+nom? ");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; fscanf(stdin,"%255s",nom);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("Hello %s, C
+te salue\n",nom);</TT>
+<BR><TT>}</TT></UL>
+
+<DL>
+<DT>
+Compilation : <TT>gcc -g -o mon_prog mon_prog.c</TT></DT>
+
+<DT>
+<A HREF="x_c.txt">Exemple 2</A>:</DT>
+
+<DL>
+<DT>
+<TT>// Exemple de programmation X-Window utilisant les</TT></DT>
+
+<BR><TT>// widgets athena Xaw (les plus moches)</TT>
+<BR><TT>// compilation : gcc -o x x.c&nbsp; -lXaw</TT>
+<P><TT>#include &lt;X11/Xlib.h></TT>
+<BR><TT>#include &lt;X11/Intrinsic.h></TT>
+<BR><TT>#include &lt;X11/StringDefs.h></TT>
+<BR><TT>#include &lt;X11/Shell.h></TT>
+<BR><TT>#include &lt;X11/Xaw/Label.h></TT>
+<BR><TT>#include &lt;X11/Xaw/Box.h></TT>
+<BR><TT>#include &lt;X11/Xaw/AsciiText.h></TT>
+<P><TT>static Widget top, box, label1, label2, texte;</TT>
+<P><TT>static void callback (Widget w, XtPointer client_data, XEvent *event)</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int n;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Arg args[20];</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; String str;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (client_data == NULL)
+exit(0);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n=0;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtSetArg(args[n],"string",&amp;str);n++;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtGetValues(text,args,n);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; printf("X-Window te
+salue, %s... \n",str);</TT>
+<BR><TT>}</TT>
+<P><TT>void main(int argc, char *argv)</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; int n;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Arg args[20];</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtAppContext context;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top = XtVaAppInitialize(&amp;context,
+"exemple", NULL, 0,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&amp;argc, argv, NULL, XtNallowShellResize,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TRUE,NULL);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; box = XtCreateManagedWidget("box",
+boxWidgetClass, top, NULL, 0);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; texte = XtVaCreateManagedWidget("text",</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+asciiTextWidgetClass, box, NULL);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label1 = XtVaCreateManagedWidget("Hello",</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+labelWidgetClass, box, NULL);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label2 =&nbsp; XtVaCreateManagedWidget("FIN",</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+labelWidgetClass, box,NULL);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtAddEventHandler(label1,ButtonPressMask,False,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(XtEventHandler)callback,"hello");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtAddEventHandler(label2,ButtonPressMask,False,</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(XtEventHandler)callback,NULL);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n=0;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtSetArg(args[n],"string","mon
+nom");n++;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtSetArg(args[n],"editType",XawtextEdit);n++;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtSetValues(text,args,n);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtRealizeWidget(top);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; XtAppMainLoop(context);</TT>
+<BR><TT>}</TT></DL>
+
+<DT>
+Compilation : gcc -o x x.c&nbsp; -lXaw</DT>
+
+<DT>
+(les headers .h Xaw et la librairie Xaw doivent &ecirc;tre install&eacute;s
+pour compiler ce programme).</DT>
+
+<DT>
+
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="C++"></A><B><U>C++</U></B></H2>
+Extension orient&eacute;e objet au langage C. Tr&egrave;s utilis&eacute;
+sous X-Window et Windows9X. KDE est &eacute;crit en C++.
+<BR><A HREF="cc.txt">Exemple 1</A>:
+<UL><TT>#include &lt;iostream.h></TT>
+<P><TT>class name</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; char nom[255];</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public:</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void demande_nom();</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void affiche_hello();</TT>
+<BR><TT>};</TT>
+<P><TT>void main(int argc, char *argv[])</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name class_hello;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class_hello.demande_nom();</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class_hello.affiche_hello();</TT>
+<BR><TT>}</TT>
+<P><TT>void name::demande_nom()</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Quel
+est ton nom? ";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cin.getline(nom,255);</TT>
+<BR><TT>}</TT>
+<P><TT>void name::affiche_hello()</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; "Hello
+" &lt;&lt; nom &lt;&lt; ", C++ te salue\n";</TT>
+<BR><TT>}</TT></UL>
+
+<DL>
+<DT>
+Compilation : <TT>g++ mon_prog.cc -o mon_prog</TT></DT>
+
+<DT>
+<A HREF="wx_cc.txt">Exemple 2</A> :</DT>
+
+<DL>
+<DT>
+<TT>// Programmation C++ avec wxWindows</TT></DT>
+
+<BR><TT>// g++ t.cc -I/usr/include/wxwin/x -I/usr/include/wxwin/base -I/usr/openwin/include/
+</p>
+<ul><li>Dwx_xview -L/usr/openwin/lib/ -lwx_ol -lxview -lX11 -lolgx -lXpm</TT></li></ul>
+<p><P><TT>#include "wxwin/base/wx.h"</TT>
+<BR><TT>class TheApp: public wxApp</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public:</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+TheApp(void);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+wxFrame* OnInit(void);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+static wxFrame* frame;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+static wxPanel* panel;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+static wxMultiText* texte;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+static wxButton* button;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+static wxButton* quit;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+void ButtonProc(wxButton&amp; but, wxCommandEvent&amp; event);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+void QuitProc(wxButton&amp; but, wxCommandEvent&amp; event);</TT>
+<BR><TT>};</TT>
+<P><TT>TheApp theApp;</TT>
+<P><TT>wxFrame* TheApp::frame = NULL;</TT>
+<BR><TT>wxPanel* TheApp::panel = NULL;</TT>
+<BR><TT>wxMultiText* TheApp::text = NULL;</TT>
+<BR><TT>wxButton* TheApp::button = NULL;</TT>
+<BR><TT>wxButton* TheApp::quit = NULL;</TT>
+<P><TT>TheApp::TheApp()</TT>
+<BR><TT>{</TT>
+<P><TT>}</TT>
+<P><TT>wxFrame* TheApp::OnInit(void)</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; frame = new wxFrame(NULL,"exemple",0,0,300,300);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; frame->Show(TRUE);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; panel = new wxPanel(frame,0,
+0, 300, 300, 0, "TheMainFrame");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; texte = new wxMultiText(panel,
+(wxFunction)NULL, "", "mon nom",</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1, 1, 150, 100);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; button = new wxButton(panel,
+(wxFunction)&amp;ButtonProc, "hello");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; quit = new wxButton(panel,
+(wxFunction)&amp;QuitProc, "fin");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return((wxFrame*) frame);</TT>
+<BR><TT>}</TT>
+<P><TT>void TheApp::ButtonProc(wxButton&amp; but, wxCommandEvent&amp; event)</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; text->GetValue()&nbsp;
+&lt;&lt; "\n";</TT>
+<BR><TT>}</TT>
+<P><TT>void TheApp::QuitProc(wxButton&amp; but, wxCommandEvent&amp; event)</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; frame->Show(False);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; exit(0);</TT>
+<BR><TT>}</TT>
+<BR>&nbsp;</DL>
+
+<DT>
+
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="Fortran"></A><B><U>Fortran</U></B></H2>
+Un ancien langage encore utilis&eacute; sur les super calculateurs.
+<BR><A HREF="fortran.txt">Exemple :</A>
+<UL><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PROGRAM exemple</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CHARACTER*10 str</TT>
+<BR><TT>10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRITE (<em>,</em>) '\bQuel est ton nom?
+'</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; READ (<em>,</em>)&nbsp; str</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRITE (<em>,</em>) '\bHello
+', str, ', Fortran te salue'</TT>
+<BR><TT>20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DO 30 i=1,6</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WRITE (<em>,</em>) 'Boucle
+', i</TT>
+<BR><TT>30&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CONTINUE</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; END</TT></UL>
+
+<DL>
+<DT>
+Compilation : f77 mon_prog.f
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="Pascal"></A><B><U>Pascal</U></B></H2>
+Tr&egrave;s utilis&eacute;s dans les ann&eacute;es 80 a &eacute;t&eacute;
+compl&egrave;tement remplac&eacute; par le C.
+<P><A HREF="pascal.txt">Exemple 1:</A>
+<UL><TT>program exemple;</TT>
+<BR><TT>Var</TT>
+<BR><TT>&nbsp;&nbsp; Nom:String[256];</TT>
+<BR><TT>Begin</TT>
+<BR><TT>&nbsp;&nbsp; write('Quel est ton nom? ');</TT>
+<BR><TT>&nbsp;&nbsp; readln(Nom);</TT>
+<BR><TT>&nbsp;&nbsp; writeln('Hello ',Nom,', Pascal te salue');</TT>
+<BR><TT>End.</TT></UL>
+
+<DL>
+<DT>
+Compilation : p2c mon_prog.pas; gcc -lp2c mon_prog.c; mv a.out mon_prog&nbsp;
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="Java"></A><B><U>Java</U></B></H2>
+Ressemble au C++ et permet
+d'int&eacute;grer des applications dans une page HTML. 
+<P>Exemple 1 :
+<P><U><A HREF="mon_applet.html">Fichier mon_applet.html :</A></U>
+<UL><TT>&lt;applet code="mon_applet.class"></TT>
+<BR><TT>&lt;/applet></TT></UL>
+<U><A HREF="mon_applet.txt">Fichier mon_applet.java :</A></U>
+<UL><TT>import java.awt.*;</TT>
+<P><TT>public class mon_applet extends java.applet.Applet</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Label Quest = new Label
+("Quel est ton nom? ");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TextField Nom = new
+TextField("",15);</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void init()</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+add(Quest);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+add(Nom);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public boolean action(Event
+evt, Object arg)</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if (evt.target instanceof TextField)</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+repaint();</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return true;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public void paint (Graphics
+g)</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String Hello;</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Hello = "Hello " + Nom.getText();</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Hello += ", Java te salue";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+if ( Nom.getText().length() != 0) {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+g.drawString(Hello,100,50);</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>}</TT></UL>
+Compilation : javac mon_applet.java
+<BR>Ex&eacute;cution&nbsp; : ouvrir le fichier HTML &agrave; l'aide d'un
+navigateur Web compatible Java.
+<P>
+<HR SIZE=3 NOSHADE WIDTH="50%">
+<BR><A HREF="java.txt">Exemple 2 :</A>
+<UL><TT>public class mon_prog</TT>
+<BR><TT>{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static void main
+( String args[]) throws java.io.IOException</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String nom = "";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println("Quel est ton nom? ");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+nom = lit();</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+System.out.println("Hello " + nom + ", Java tu salue");</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<P><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; public static String
+lit() throws java.io.IOException</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+char Caractere;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+String Chaine = "";</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+while ((Caractere=(char)System.in.read()) != '\n')</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Chaine = Chaine + Caractere;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+}</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+return Chaine;</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</TT>
+<BR><TT>}</TT></UL>
+
+<DL>
+<DT>
+Compilation : javac mon_prog.java</DT>
+
+<BR>Ex&eacute;cution : kaffe mon_prog&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ou&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; java mon_prog
+<HR SIZE=5 NOSHADE WIDTH="100%"></DL>
+
+<H2>
+<A NAME="JavaScript"></A><B><U>Scripts JavaScript</U></B></H2>
+A ne pas confondre avec Java !!!
+<BR>Tr&egrave;s utile pour rendre interactif vos pages HTML. Le m&eacute;lange
+de HTML et JavaScript dans le m&ecirc;me fichier rend les pages WEB tr&egrave;s
+vivantes. Attention, JavaScript a des comportements differents selon les navigateurs,
+n'utilisez pas des fonctions avancées.
+<P><A HREF="jscript.txt">Exemple 1 :</A>
+<UL><TT>&lt;HTML></TT>
+<BR><TT>&lt;HEAD></TT>
+<BR><TT>&lt;SCRIPT LANGUAGE="JavaScript"></TT>
+<BR><TT>&lt;!--</TT>
+<BR><TT>function update() {</TT>
+<BR><TT>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; document.forms[0].reponse.value
+= "Hello " + document.forms[0].nom.value + ", JavaScript te salue"</TT>
+<BR><TT>}</TT>
+<BR><TT>// --></TT>
+<BR><TT>&lt;/SCRIPT></TT>
+<BR><TT>&lt;/HEAD></TT>
+<P><TT>&lt;BODY></TT>
+<BR><TT>&lt;SCRIPT LANGUAGE="JavaScript"></TT>
+<BR><TT>&lt;!--</TT>
+<BR><TT>document.write("&lt;FORM>\n")</TT>
+<BR><TT>document.write("Quel est ton nom? ")</TT>
+<BR><TT>document.write("&lt;INPUT TYPE=\"text\" NAME=\"nom\" SIZE=\"25\"
+OnChange=\"update()\">\n")</TT>
+<BR><TT>document.write("&lt;INPUT TYPE=\"text\" NAME=\"reponse\" SIZE=\"60\">\n")</TT>
+<BR><TT>document.write("&lt;/FORM>\n")</TT>
+<BR><TT>document.forms[0].nom.focus()</TT>
+<BR><TT>// --></TT>
+<BR><TT>&lt;/SCRIPT></TT>
+<BR><TT>&lt;/BODY></TT>
+<BR><TT>&lt;/HTML></TT></UL>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+document.write("<FORM>\n")
+document.write("Quel est ton nom? ")
+document.write("<INPUT TYPE=\"text\" NAME=\"nom\" SIZE=\"25\" OnChange=\"update()\">\n")
+document.write("<INPUT TYPE=\"text\" NAME=\"reponse\" SIZE=\"60\">\n")
+document.write("</FORM>\n")
+//document.forms[0].nom.focus()
+// -->
+</SCRIPT>
+
+<H2>
+
+<HR SIZE=5 NOSHADE WIDTH="100%"></H2>
+
+<H2>
+<A NAME="HTML"></A><B><U>(Scripts) HTML</U></B></H2>
+LE Langage de mise en forme de texte du WEB.
+<P><A HREF="html.txt">Exemple 1</A> :
+<UL><TT>&lt;HTML></TT>
+<P><TT>&lt;HEAD></TT>
+<BR><TT>&lt;TITLE>Hyper Text Markup Language&lt;/TITLE></TT>
+<BR><TT>&lt;/HEAD></TT>
+<P><TT>&lt;BODY BGCOLOR=#8fffff></TT>
+<P><TT>&lt;U>&lt;CENTER>&lt;H1></TT>
+<BR><TT>H&amp;nbsp; T&amp;nbsp; M&amp;nbsp; L</TT>
+<BR><TT>&lt;/H1>&lt;/CENTER>&lt;/U></TT>
+<P><TT>&lt;I>HTML est un langage de mise en forme de documents&lt;/I></TT>
+<BR><TT>&lt;BR></TT>
+<BR><TT>&lt;B>Ce n'est pas un langage de programmation !!!&lt;/B></TT>
+<BR><TT>&lt;BR>&lt;A HREF="prog.html">un lien &lt;/A>&lt;BR></TT>
+<BR><TT>&lt;IMG SRC="prog.gif">une image</TT>
+<BR><TT>&lt;FONT SIZE="+2">&lt;PRE>Les caract&egrave;res sp&eacute;ciaux
+:&lt;/PRE>&lt;/FONT></TT>
+<BR><TT>&amp;eacute;</TT>
+<BR><TT>&amp;egrave;</TT>
+<BR><TT>&amp;ecirc;</TT>
+<BR><TT>&amp;euml;</TT>
+<BR><TT>&amp;icirc;</TT>
+<BR><TT>&amp;iuml;</TT>
+<BR><TT>&amp;ouml;</TT>
+<BR><TT>&amp;uuml;</TT>
+<BR><TT>&amp;ugrave;</TT>
+<BR><TT>&amp;agrave;</TT>
+<BR><TT>&amp;acirc;</TT>
+<BR><TT>&amp;amp;</TT>
+<BR><TT>&amp;nbsp;</TT>
+<BR><TT>&amp;lt;</TT>
+<BR><TT>&lt;HR></TT>
+<BR><TT>&lt;BR></TT>
+<BR><TT>Un tableau :</TT>
+<BR><TT>&lt;TABLE BORDER=0 CELLSPACING=1 CELLPADDING=0 COLS=2 WIDTH="20%"
+BGCOLOR="#66FF8F" ></TT>
+<BR><TT>&lt;TR></TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; &lt;TD>1&lt;/TD></TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; &lt;TD>3&lt;/TD></TT>
+<BR><TT>&lt;/TR>&lt;TR></TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; &lt;TD>2&lt;/TD></TT>
+<BR><TT>&nbsp;&nbsp;&nbsp; &lt;TD>4&lt;/TD></TT>
+<BR><TT>&lt;/TR></TT>
+<BR><TT>&lt;/TABLE></TT>
+<P><TT>&lt;UL></TT>
+<BR><TT>&lt;LI>aa&lt;/LI></TT>
+<BR><TT>&lt;LI>bb&lt;/LI></TT>
+<BR><TT>&lt;LI>cc&lt;/LI></TT>
+<BR><TT>&lt;/UL></TT>
+<BR><TT>&lt;OL></TT>
+<BR><TT>&lt;LI>aaa&lt;/LI></TT>
+<BR><TT>&lt;LI>bbb&lt;/LI></TT>
+<BR><TT>&lt;LI>ccc&lt;/LI></TT>
+<BR><TT>&lt;/OL></TT>
+<P><TT>&lt;FORM ACTION="mailto:root@localhost" METHOD="post"></TT>
+<BR><TT>nom:&lt;INPUT TYPE="text" NAME="nom" SIZE=30></TT>
+<BR><TT>&lt;BR>oui&lt;INPUT TYPE="radio" NAME="rad1" VALUE="oui"></TT>
+<BR><TT>&nbsp;non&lt;INPUT TYPE="radio" NAME="rad1" VALUE="non" CHECKED></TT>
+<BR><TT>&lt;BR>&lt;INPUT TYPE="checkbox" NAME="chk1" VALUE="oui" CHECKED></TT>
+<BR><TT>&lt;INPUT TYPE="checkbox" NAME="chk2" VALUE="non" ></TT>
+<BR><TT>&lt;BR>&lt;INPUT TYPE="file" NAME="fichier" ></TT>
+<BR><TT>&lt;INPUT TYPE="hidden" NAME="cache" VALUE="XxX" ></TT>
+<BR><TT>&lt;BR>&lt;SELECT NAME="sel" SIZE=2></TT>
+<BR><TT>&lt;OPTION VALUE="un">premier</TT>
+<BR><TT>&lt;OPTION VALUE="deux">deuxieme</TT>
+<BR><TT>&lt;OPTION VALUE="trois">troisieme</TT>
+<BR><TT>&lt;/SELECT></TT>
+<BR><TT>&lt;BR></TT>
+<BR><TT>&lt;TEXTAREA NAME="text" ROWS=6 COLS=60 WARP="HARD"></TT>
+<BR><TT>&nbsp;H T M L</TT>
+<BR><TT>&lt;/TEXTAREA>&lt;BR></TT>
+<BR><TT>&lt;INPUT TYPE="submit" value="envoi"></TT>
+<BR><TT>&lt;INPUT TYPE="reset" value="effacer"></TT>
+<P><TT>&lt;/FORM></TT>
+<P><TT>&lt;A HREF="mailto:nickasil@linuxbox.com">nickasil@linuxbox.com&lt;/A></TT>
+<P><TT>&lt;/BODY></TT>
+<P><TT>&lt;/HTML></TT></UL>
+
+<CENTER>
+<H1>
+<U>H&nbsp; T&nbsp; M&nbsp; L</U></H1></CENTER>
+<I>HTML est un langage de mise en forme de documents</I>
+<BR><B>Ce n'est pas un langage de programmation !!!</B>
+<BR><A HREF="prog.html">un lien</A>
+<BR><IMG SRC="prog.gif" >une image
+<PRE><FONT SIZE=+2>Les caract&egrave;res sp&eacute;ciaux :</FONT></PRE>
+&eacute; &egrave; &ecirc; &euml; &icirc; &iuml; &ouml; &uuml; &ugrave;
+&agrave; &acirc; &amp;&nbsp;&nbsp; &lt;&nbsp;
+<HR>
+<BR>Un tableau :
+<TABLE BORDER=0 CELLPADDING=0 COLS=2 WIDTH="20%" BGCOLOR="#66FF8F" >
+<TR>
+<TD>1</TD>
+
+<TD>3</TD>
+</TR>
+
+<TR>
+<TD>2</TD>
+
+<TD>4</TD>
+</TR>
+</TABLE>
+
+<UL>
+<LI>
+aa</LI>
+
+<LI>
+bb</LI>
+
+<LI>
+cc</LI>
+</UL>
+
+<OL>
+<LI>
+aaa</LI>
+
+<LI>
+bbb</LI>
+
+<LI>
+ccc</LI>
+</OL>
+<FORM ACTION="mailto:root@localhost" METHOD="post">nom:<INPUT TYPE="text" NAME="nom" SIZE=30>
+<BR>oui<INPUT TYPE="radio" NAME="rad1" VALUE="oui"> non<INPUT TYPE="radio" NAME="rad1" VALUE="non" CHECKED>
+<BR><INPUT TYPE="checkbox" NAME="chk1" VALUE="oui" CHECKED><INPUT TYPE="checkbox" NAME="chk2" VALUE="non" >
+<BR><INPUT TYPE="file" NAME="fichier" ><INPUT TYPE="hidden" NAME="cache" VALUE="XxX" >
+<BR><SELECT NAME="sel" SIZE=2><OPTION VALUE="un">premier&nbsp;<OPTION VALUE="deux">deuxieme&nbsp;<OPTION VALUE="trois">troisieme&nbsp;</SELECT>
+<BR><TEXTAREA NAME="text" ROWS=6 COLS=60 WARP="HARD">H T M L&nbsp;</TEXTAREA>
+<BR><INPUT TYPE="submit" value="envoi"><INPUT TYPE="reset" value="effacer"></FORM><A HREF="mailto:nickasil@linuxbox.com">nickasil@linuxbox.com</A>
+<DL>
+<DT>
+Ex&eacute;cution : ouvrir le document mon_fichier.html avec un navigateur
+Web.&nbsp;
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<CENTER>
+<H2>
+<A NAME="Programmation Dos"></A><B><U>Programmation Dos</U></B></H2></CENTER>
+Pour qu'un programme soit ex&eacute;cutable sous DOS (ou Windows 95-98)
+son nom doit avoir l'extension .exe, .com ou.bat suivant le type du programme.
+<P>
+<HR SIZE=5 NOSHADE WIDTH="100%">
+<H2>
+<A NAME="Scripts Batch (.BAT)"></A><B><U><A HREF="batch.txt">Scripts Batch
+(.BAT)</A></U></B></H2>
+Qui ne conna&icirc;t pas autoexec.bat ?
+<UL>@echo off
+<BR>choice "As-tu un nom? "
+<BR>if ERRORLEVEL 2 goto non
+<BR>if ERRORLEVEL 1 goto oui
+<BR>goto fin
+<BR>:oui
+<BR>echo Hello, MS-DOS te salue
+<BR>goto fin
+<BR>:non
+<BR>echo Tu n'as pas de nom? Tu m'&eacute;tonnes.
+<BR>goto fin
+<BR>:fin</UL>
+
+<DL>
+<DT>
+Nom du fichier : mon_prog.bat</DT>
+
+<BR>Ex&eacute;cution : MON_PROG
+<HR SIZE=5 NOSHADE WIDTH="100%"></DL>
+
+<H2>
+<A NAME="QBasic"></A><B><U><A HREF="qbasic.txt">Scripts QBasic</A></U></B></H2>
+Le langage standard livr&eacute; avec DOS, est remplac&eacute; par VisualBasic
+sous Windows9X.
+<BR>Mais VisualBasic n'est pas livr&eacute; en standard. QBasic se trouve
+dans c:\windows\command\ avec Windows9X.
+<UL><TT>INPUT "Quel est ton nom? ", nom$</TT>
+<BR><TT>PRINT "Hello "; nom$; ", QBasic te salue"</TT>
+<BR><TT>SYSTEM</TT></UL>
+
+<DL>
+<DT>
+Ex&eacute;cution : qbasic /run mon_prog.bas&nbsp;
+<HR SIZE=5 NOSHADE WIDTH="100%"></DT>
+</DL>
+
+<H2>
+<A NAME="Assembleur"></A><B><U><A HREF="asm.txt">Assembleur</A></U></B></H2>
+DOS est livr&eacute; avec le programme "debug", il servait &agrave; configur&eacute;
+les disques durs dans au temps o&ugrave; placer 10MB sur un disque dur
+5 1/4 &eacute;tait une prouesse technologique. Maintenant, il ne sert &agrave;
+rien sauf &agrave; ceux qui ont envie de parcourir les secteurs d'une disquette
+byte par byte ou qui veulent modifier la table de partition manuellement
+(fortement d&eacute;conseill&eacute;). Il peut aussi servir &agrave; assembler
+des petits programmes .COM ou &agrave; les d&eacute;sassembler (par ici
+les crackers :-).
+<UL><TT>A 0100</TT>
+<BR><TT>ORG 200</TT>
+<BR><TT>DB "Quel est ton nom? $"</TT>
+<BR><TT>ORG 230</TT>
+<BR><TT>DB 0A,0D,"Hello "</TT>
+<BR><TT>ORG 100</TT>
+<BR><TT>MOV AH,09</TT>
+<BR><TT>MOV DX,200</TT>
+<BR><TT>INT 21</TT>
+<BR><TT>MOV DI,238</TT>
+<BR><TT>CLD</TT>
+<BR><TT>MOV AH,01</TT>
+<BR><TT>INT 21</TT>
+<BR><TT>STOSB</TT>
+<BR><TT>CMP AL,0D</TT>
+<BR><TT>JNE 010B</TT>
+<BR><TT>MOV AL,24</TT>
+<BR><TT>STOSB</TT>
+<BR><TT>MOV AH,09</TT>
+<BR><TT>MOV DX,230</TT>
+<BR><TT>INT 21</TT>
+<BR><TT>MOV AX,4C00</TT>
+<BR><TT>INT 21</TT>
+<BR>&nbsp;
+<P><TT>RCX</TT>
+<BR><TT>140</TT>
+<BR><TT>N MON_PROG.COM</TT>
+<BR><TT>W 0100</TT>
+<BR><TT>Q</TT></UL>
+Compilation : debug &lt; MON_PROG.TXT
+<BR>Ex&eacute;cution : MON_PROG
+
+</div></div>
+</div>
+<footer class="mx-auto text-center text-muted" style="font-size:min(3vw, 12px);">
+Copyright &copy; 1997 - 2023 Jean-Marc Lienher
+</footer>
+
+<script src="../script.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

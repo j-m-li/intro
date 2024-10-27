@@ -1,0 +1,56 @@
+// Exemple de programmation X-Window utilisant les 
+// widgets athena Xaw (les plus moches)
+// compilation : gcc -o x x.c  -lXaw
+
+#include <X11/Xlib.h>
+#include <X11/Intrinsic.h>  
+#include <X11/StringDefs.h>  
+#include <X11/Shell.h>  
+#include <X11/Xaw/Label.h>
+#include <X11/Xaw/Box.h>
+#include <X11/Xaw/AsciiText.h>
+
+static Widget top, box, label1, label2, text;
+
+static void callback (Widget w, XtPointer client_data, XEvent *event)
+{
+	int n;
+        Arg args[20]; 
+	String str;
+
+	if (client_data == NULL) exit(0);
+	n=0;
+        XtSetArg(args[n],"string",&str);n++;	
+	XtGetValues(text,args,n);
+	printf("X-Window te salue, %s... \n",str);
+}
+
+void main(int argc, char **argv)
+{
+	int n;
+	Arg args[20];
+	XtAppContext context;
+
+	top = XtVaAppInitialize(&context, "exemple", NULL, 0,
+				&argc, argv, NULL, XtNallowShellResize,
+				TRUE,NULL);
+	box = XtCreateManagedWidget("box", boxWidgetClass, top, NULL, 0);
+	text = XtVaCreateManagedWidget("text",
+					asciiTextWidgetClass, box, NULL);
+	label1 = XtVaCreateManagedWidget("Hello",
+					 labelWidgetClass, box, NULL);
+	label2 =  XtVaCreateManagedWidget("FIN", 
+					labelWidgetClass, box,NULL); 
+	XtAddEventHandler(label1,ButtonPressMask,False,
+				(XtEventHandler)callback,"hello");
+	XtAddEventHandler(label2,ButtonPressMask,False,
+				(XtEventHandler)callback,NULL);
+	n=0;
+	XtSetArg(args[n],"string","mon nom");n++;
+	XtSetArg(args[n],"editType",XawtextEdit);n++;
+	XtSetValues(text,args,n);
+	XtRealizeWidget(top);
+	XtAppMainLoop(context);
+}
+
+

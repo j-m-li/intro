@@ -1,0 +1,8 @@
+#!/bin/awk -f
+BEGIN {printf "Quel est ton nom? "}
+{
+	print "hello " $1 ", awk te salue"
+	exit
+}
+END {print "bye bye"}
+

@@ -1,0 +1,23 @@
+
+public class ex2 
+{
+	public static void main ( String args[]) throws java.io.IOException
+	{
+		String nom = "";
+		System.out.println("Quel est ton nom? ");
+		nom = lit();
+		System.out.println("Hello " + nom + ", Java tu salue");
+	}
+	
+	public static String lit() throws java.io.IOException
+	{
+		char Caractere;
+		String Chaine = "";
+		while ((Caractere=(char)System.in.read()) != '\n')
+		{
+			Chaine = Chaine + Caractere;
+		}
+		return Chaine;
+	}
+}
+

@@ -1,0 +1,84 @@
+<HTML>
+
+<HEAD>
+<TITLE>Hyper Text Markup Language</TITLE>
+</HEAD>
+
+<BODY BGCOLOR=#8fffff>
+
+<U><CENTER><H1>
+H&nbsp; T&nbsp; M&nbsp; L
+</H1></CENTER></U>
+
+<I>HTML est un language de mise en forme de documents</I>
+<BR>
+<B>Ce n'est pas un language de programmation !!!</B>
+<BR><A HREF="prog.html">un lien </A><BR>
+<IMG SRC="prog.gif">une image
+<FONT SIZE="+2"><PRE>Les caractères spéciaux :</PRE></FONT>
+&eacute;
+&egrave;
+&ecirc;
+&euml;
+&icirc;
+&iuml;
+&ouml;
+&uuml;
+&ugrave;
+&agrave;
+&acirc;
+&amp;
+&nbsp;
+&lt;
+<HR>
+<BR>
+Un tableau :
+<TABLE BORDER=0 CELLSPACING=1 CELLPADDING=0 COLS=2 WIDTH="20%" BGCOLOR="#66FF8F" >
+<TR>
+    <TD>1</TD>
+    <TD>3</TD>
+</TR><TR>
+    <TD>2</TD>
+    <TD>4</TD>
+</TR>
+</TABLE>
+
+<UL>
+<LI>aa</LI>
+<LI>bb</LI>
+<LI>cc</LI>
+</UL>
+<OL>
+<LI>aaa</LI>
+<LI>bbb</LI>
+<LI>ccc</LI>
+</OL>  
+
+<FORM ACTION="mailto:root@localhost" METHOD="post">
+nom:<INPUT TYPE="text" NAME="nom" SIZE=30>
+<BR>oui<INPUT TYPE="radio" NAME="rad1" VALUE="oui"> 
+ non<INPUT TYPE="radio" NAME="rad1" VALUE="non" CHECKED>
+<BR><INPUT TYPE="checkbox" NAME="chk1" VALUE="oui" CHECKED>
+<INPUT TYPE="checkbox" NAME="chk2" VALUE="non" >
+<BR><INPUT TYPE="file" NAME="fichier" >
+<INPUT TYPE="hidden" NAME="cache" VALUE="XxX" >
+<BR><SELECT NAME="sel" SIZE=2>
+<OPTION VALUE="un">premier
+<OPTION VALUE="deux">deuxieme
+<OPTION VALUE="trois">troisieme
+</SELECT>
+<BR>
+<TEXTAREA NAME="text" ROWS=6 COLS=60 WARP="HARD">
+ H T M L
+</TEXTAREA><BR>
+<INPUT TYPE="submit" value="envoi">
+<INPUT TYPE="reset" value="effacer">
+
+</FORM>
+
+<A HREF="mailto:nickasil@bluewin.ch">nickasil@bluewin.ch</A>
+
+</BODY>
+
+</HTML>
+

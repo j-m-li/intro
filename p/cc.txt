@@ -1,0 +1,29 @@
+#include <iostream.h>
+
+class name
+{
+	char nom[255];
+	
+	public:
+	void demande_nom();
+	void affiche_hello();
+};
+
+void main(int argc, char *argv[])
+{
+	name class_hello;
+	class_hello.demande_nom();
+	class_hello.affiche_hello();
+}
+
+void name::demande_nom()
+{
+	cout << "Quel est ton nom? ";
+	cin.getline(nom,255);
+}
+
+void name::affiche_hello()
+{
+	cout << "Hello " << nom << ", C++ te salue\n";
+}
+

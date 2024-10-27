@@ -1,0 +1,12 @@
+@echo off
+choice "As-tu un nom? "
+if ERRORLEVEL 2 goto non
+if ERRORLEVEL 1 goto oui
+goto fin
+:oui
+echo Hello, MS-DOS te salue
+goto fin
+:non
+echo Tu n'as pas de nom? Tu m'étonnes.
+goto fin
+:fin

@@ -1,0 +1,13 @@
+#!/usr/bin/wish
+
+label .quest -text "Quel est ton nom ? "
+entry .nom
+label .rep -text ""
+button .quit -text "Quitter" -command { exit}
+button .ok -text "OK" -command {
+	set nom [.nom get ] 
+	.rep config -text "hello $nom, Tcl/Tk te salue"
+}
+pack .quest .nom .rep .ok .quit  
+
+ 

@@ -1,0 +1,50 @@
+#!/usr/bin/tclsh
+set variable 0
+
+for {set i 0} {$i < 5} {incr i} {
+       puts "i = $i"
+}
+
+set i 0
+while {$i < 5} {
+       puts "sortie prematuree"
+       incr i
+       if {$i == 2} { break }
+}
+
+set i 0
+if {$i == 0} then {
+       puts "zero"
+} elseif {$i < 0} then {
+       puts "negatif"
+} else {
+       puts "postitif"
+}
+
+proc ajoute_2_a num {
+       return [expr $num + 2]
+}
+set i 1
+puts "[ajoute_2_a $i]"
+
+puts "$env(PATH)"
+
+set tableau(0) "oui"
+set tableau(1) "non"
+set tableau(2) "bof"
+for {set i 0} {$i != 3} {incr i} {
+       puts "$tableau($i)"
+}
+
+puts -nonewline stdout "tapez quelque chose > ? "
+flush stdout
+set entree [gets stdin]
+set file_handler [open "test.tmp" {RDWR CREAT APPEND}]
+puts $file_handler $entree
+seek $file_handler 0 start
+while {[gets $file_handler line] != -1} {
+       puts "$line"
+}
+close $file_handler
+
+

@@ -1,0 +1,18 @@
+#!/bin/ksh
+
+function html_head  {
+	echo -ne "Content-type: text/html\n\n" 
+}
+
+html_head
+
+i=0
+while (test $i -lt  10) {
+	i=`expr $i + 1`
+	echo "Ceci est le mot magique pour creer un script CGI :"
+	echo "<PRE>"
+	html_head
+	echo "</PRE>"
+}
+echo "He oui, c'est tout ..."
+

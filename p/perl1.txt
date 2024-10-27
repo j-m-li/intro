@@ -1,0 +1,6 @@
+#!/usr/bin/perl
+
+print "Quel est ton nom ? ";
+$nom = <STDIN>;
+chomp($nom);
+print "Hello $nom, Perl te salue\n";

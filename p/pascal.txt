@@ -1,0 +1,9 @@
+program exemple;
+Var
+   Nom:String[255];
+Begin
+   write('Quel est ton nom? ');
+   readln(Nom);
+   writeln('Hello ',Nom,', Pascal te salue');
+End.
+
